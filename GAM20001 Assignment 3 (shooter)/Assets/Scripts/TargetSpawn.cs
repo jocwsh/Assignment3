@@ -10,7 +10,7 @@ public class TargetSpawn : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(Target);
+            Instantiate(Target, transform.position, transform.rotation);
         }
     }
 }

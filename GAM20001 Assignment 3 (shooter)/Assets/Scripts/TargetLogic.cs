@@ -6,28 +6,21 @@ public class TargetLogic : MonoBehaviour
     public float desiredtime;
     private float percentageComplete;
 
-    private GameObject Spawner;
     private Vector3 SpawnPos;
     private Vector3 endPos;
-    private float xend;
-
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        //might need better way to reference seperate gameobject but works for now
-        Spawner = GameObject.Find("Target Spawner");
+        SpawnPos = transform.position;
         
-        SpawnPos = Spawner.transform.position;
-
-        xend = - SpawnPos.x;
-        
-        endPos = new Vector3 (xend, 0,0);
+        endPos = new Vector3 (-SpawnPos.x, SpawnPos.y,SpawnPos.z);
     }
 
     // Update is called once per frame
     void Update()
     {
+        //timer for target speed and destroying
         elapsedtime += Time.deltaTime;
         percentageComplete = elapsedtime / desiredtime;
 
