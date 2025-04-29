@@ -237,7 +237,7 @@ Transform:
   m_GameObject: {fileID: 333515526}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 7, y: 0, z: 0}
+  m_LocalPosition: {x: 7, y: 1.5, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -759,7 +759,7 @@ Transform:
   m_GameObject: {fileID: 1867801833}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -7, y: -0, z: -0}
+  m_LocalPosition: {x: -7, y: -0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -774,7 +774,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1933384256}
-  - component: {fileID: 1933384255}
   - component: {fileID: 1933384254}
   m_Layer: 0
   m_Name: Round Manager
@@ -795,21 +794,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4492a67e9ae3cba43a2999f7d0383e0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roundtime: 20
   roundactive: 1
   btnNextRound: {fileID: 515260478}
---- !u!114 &1933384255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1933384253}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bc144b242824694ca38b4eb0d8c6823, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  roundnumber: 0
 --- !u!4 &1933384256
 Transform:
   m_ObjectHideFlags: 0

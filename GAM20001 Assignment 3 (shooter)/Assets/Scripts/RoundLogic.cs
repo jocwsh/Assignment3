@@ -1,28 +1,49 @@
+using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 public class RoundLogic : MonoBehaviour
 {
     private int roundnumber = 1;
-    private float roundtime = 2f;
+    public float roundtime;
+    private float roundcountdown;
     public bool roundactive = false;
 
     public GameObject btnNextRound;
 
-    
+    private float thresholdscore;
+
+    private float exponent;
+
+    void Start()
+    {
+        roundcountdown = roundtime;
+    }
+
     void Update()
     {
 
         if (roundactive == false)
         {
             roundactive = btnNextRound.GetComponent<buttonmanager>().buttonpressed;
-            roundtime = 2f;
+            roundcountdown = roundtime;
 
             if (btnNextRound.GetComponent<buttonmanager>().buttonpressed == true)
             {
                 roundactive = true;
                 btnNextRound.GetComponent<buttonmanager>().buttonpressed = false;
 
+                /* This is me trying to figure out the threshold, it doesnt work
+                exponent = (roundnumber + 10) / 10;
+                Debug.Log (exponent);
+                thresholdscore = math.pow (40, exponent);
+
+                Debug.Log (thresholdscore);
+                */
+
                 //sets button bool back to false 
+                
                 btnNextRound.GetComponent<buttonmanager>().makefalse();
             }
         }
@@ -42,11 +63,15 @@ public class RoundLogic : MonoBehaviour
 
     void playround()
     {
-        roundtime -= Time.deltaTime;
+        roundcountdown -= Time.deltaTime;
+
 
         //logic for round in here
 
-        if (roundtime < 0)
+
+        //this is for checking threshold
+        //if (roundcountdown < 0 && score >= thresholdscore)
+        if (roundcountdown < 0)
         {
             roundactive = false;
             roundnumber += 1;
