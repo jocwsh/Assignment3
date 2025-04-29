@@ -13,7 +13,11 @@ public class TargetLogic : MonoBehaviour
     private Vector3 EasySize, MediumSize, HardSize;
     
 
-    private int targettype;
+    private int targetroll;
+
+
+    public bool EasyTarget, MediumTarget, HardTarget;
+
 
     private int hardchance = 20;
     private int mediumchance = 30;
@@ -32,19 +36,22 @@ public class TargetLogic : MonoBehaviour
         HardSize = new Vector3 (HardScale, 0.06f, HardScale);
 
 
-        targettype = Random.Range (0, hardchance + mediumchance + hardchance);
+        targetroll = Random.Range (0, hardchance + mediumchance + hardchance);
 
-        if (targettype >= hardchance + mediumchance && targettype <= hardchance + mediumchance + easychance)
+        if (targetroll >= hardchance + mediumchance && targetroll <= hardchance + mediumchance + easychance)
         {
             transform.localScale = EasySize;
+            EasyTarget = true;
         }
-        if (targettype >= hardchance && targettype < hardchance + mediumchance)
+        if (targetroll >= hardchance && targetroll < hardchance + mediumchance)
         {
             transform.localScale = MediumSize;
+            MediumTarget = true;
         }
-        if (targettype >= 0 && targettype < hardchance)
+        if (targetroll >= 0 && targetroll < hardchance)
         {
             transform.localScale = HardSize;
+            HardTarget = true;
         }
            
     }
@@ -68,6 +75,7 @@ public class TargetLogic : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         //link to score here
+        
 
         //play destroy animation here
         Destroy(gameObject);
