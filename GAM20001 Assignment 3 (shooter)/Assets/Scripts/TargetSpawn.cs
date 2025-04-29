@@ -21,10 +21,14 @@ public class TargetSpawn : MonoBehaviour
                 randomspawn();
             } 
         }
+        if (GameObject.Find("Round Manager").GetComponent<RoundLogic>().roundactive == false)
+        {
+            countdown = 0;
+        }
     }
 
     void randomspawn()
     {
-        countdown = Random.Range (0.75f,2f);
+        countdown = Random.Range (1f,2f);
     }
 }

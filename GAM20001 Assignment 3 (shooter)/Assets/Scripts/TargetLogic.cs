@@ -66,8 +66,6 @@ public class TargetLogic : MonoBehaviour
 
         if (percentageComplete >= 1 || GameObject.Find("Round Manager").GetComponent<RoundLogic>().roundactive == false)
         {
-
-            
             Destroy(gameObject);
         }
     }
@@ -75,6 +73,19 @@ public class TargetLogic : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         //link to score here
+        //maybe also add text to show how many points a target actually is
+        if (EasyTarget == true)
+        {
+            GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().easyhit();
+        }
+        if (MediumTarget == true)
+        {
+            GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().mediumhit();
+        }
+        if (HardTarget == true)
+        {
+            GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().hardhit();
+        }
         
 
         //play destroy animation here

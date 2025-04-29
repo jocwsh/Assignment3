@@ -3,6 +3,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
+using TMPro;
+
+
 public class RoundLogic : MonoBehaviour
 {
     private int roundnumber = 1;
@@ -13,12 +16,14 @@ public class RoundLogic : MonoBehaviour
     public GameObject btnNextRound;
 
     private float thresholdscore;
-
     private float exponent;
+
+    private TextMeshPro timertext;
 
     void Start()
     {
         roundcountdown = roundtime;
+        timertext = GetComponent<TextMeshPro>();
     }
 
     void Update()
@@ -28,6 +33,7 @@ public class RoundLogic : MonoBehaviour
         {
             roundactive = btnNextRound.GetComponent<buttonmanager>().buttonpressed;
             roundcountdown = roundtime;
+            timertext.text = "0.000";
 
             if (btnNextRound.GetComponent<buttonmanager>().buttonpressed == true)
             {
@@ -64,9 +70,11 @@ public class RoundLogic : MonoBehaviour
     void playround()
     {
         roundcountdown -= Time.deltaTime;
-
+        //maybe cut off some decimals at the end here
+        timertext.text = roundcountdown.ToString("0.000");
 
         //logic for round in here
+
 
 
         //this is for checking threshold
