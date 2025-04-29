@@ -31,6 +31,10 @@ public class RoundLogic : MonoBehaviour
         {
             //makes button uninteractable
             btnNextRound.GetComponent<Button>().interactable = false;
+            
+            //moves off screen
+            btnNextRound.GetComponent<RectTransform>().localPosition = new Vector2(0, 500);
+
             playround();
         }
     }
@@ -51,6 +55,9 @@ public class RoundLogic : MonoBehaviour
 
             //makes button interactable
             btnNextRound.GetComponent<Button>().interactable = true;
+
+            //moves back on screen
+            btnNextRound.GetComponent<RectTransform>().localPosition = new Vector2 (0, 0);
 
         }
     }
