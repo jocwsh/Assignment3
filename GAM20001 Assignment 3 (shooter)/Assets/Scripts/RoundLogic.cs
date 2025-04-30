@@ -18,6 +18,8 @@ public class RoundLogic : MonoBehaviour
     private float thresholdscore;
     //private float exponent;
 
+
+    //defs make timer into its own object later when model in game
     private TextMeshPro timertext;
 
     private float[] thresholdcuttoff;
@@ -32,14 +34,10 @@ public class RoundLogic : MonoBehaviour
         //threshold is currently an array but can be a formula later
         thresholdcuttoff = new float [6] {500, 800, 1200, 1800, 2500, 3500};
 
-        
     }
 
     void Update()
     {
-
-        playscore = GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().score;
-
         if (roundactive == false)
         {
             roundactive = btnNextRound.GetComponent<buttonmanager>().buttonpressed;
@@ -60,9 +58,6 @@ public class RoundLogic : MonoBehaviour
                 */
 
                 //sets button bool back to false 
-
-                
-                
                 btnNextRound.GetComponent<buttonmanager>().makefalse();
             }
         }
@@ -72,7 +67,7 @@ public class RoundLogic : MonoBehaviour
             //makes button uninteractable
             btnNextRound.GetComponent<Button>().interactable = false;
             
-            //moves off screen
+            //moves off screen (maybe change it to being invisible????)
             btnNextRound.GetComponent<RectTransform>().localPosition = new Vector2(0, 500);
 
             thresholdscore = thresholdcuttoff[roundnumber];
@@ -96,8 +91,11 @@ public class RoundLogic : MonoBehaviour
         
         if (roundcountdown < 0)
         {
+            playscore = GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().score;
+
             if (playscore >= thresholdscore)
             {
+                //win sequence
                 roundactive = false;
                 roundnumber += 1;
 
@@ -117,7 +115,7 @@ public class RoundLogic : MonoBehaviour
 
             else
             {
-                //put lose menu here
+                //put lose sequence here
                 Debug.Log (thresholdscore);
                 roundactive = false;
                 Debug.Log (playscore);

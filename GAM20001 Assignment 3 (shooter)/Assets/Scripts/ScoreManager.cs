@@ -10,6 +10,7 @@ public class ScoreManager : MonoBehaviour
     //for laters
     //public float easymult, mediummult, hardmult;
 
+    //defs make score into its own object later when scoreboard model in game
     private TextMeshPro scoretext;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
