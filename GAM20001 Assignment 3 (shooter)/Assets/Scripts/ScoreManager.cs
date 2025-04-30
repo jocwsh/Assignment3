@@ -7,8 +7,9 @@ public class ScoreManager : MonoBehaviour
     //maybe display score as an int
     public float score;
 
-    //for laters
+    //for laters maybe
     //public float easymult, mediummult, hardmult;
+    public float globalmult;
 
     //defs make score into its own object later when scoreboard model in game
     private TextMeshPro scoretext;
@@ -32,14 +33,14 @@ public class ScoreManager : MonoBehaviour
 
     public void easyhit()
     {
-        score += 50; 
+        score += 50 * globalmult; 
     }
     public void mediumhit()
     {
-        score += 80;
+        score += 80 * globalmult;
     }
     public void hardhit()
     {
-        score += 100;
+        score += 100 * globalmult;
     }
 }

@@ -752,6 +752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
+  globalmult: 1
 --- !u!224 &1483948310
 RectTransform:
   m_ObjectHideFlags: 0

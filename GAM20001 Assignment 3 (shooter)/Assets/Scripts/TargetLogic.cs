@@ -9,6 +9,10 @@ public class TargetLogic : MonoBehaviour
     private Vector3 SpawnPos;
     private Vector3 endPos;
 
+    private Vector3 startypos = new Vector3 (0,0,0);
+    private Vector3 endypos;
+
+
     public float EasyScale, MediumScale, HardScale;
     private Vector3 EasySize, MediumSize, HardSize;
     
@@ -29,7 +33,9 @@ public class TargetLogic : MonoBehaviour
     {
         SpawnPos = transform.position;
         
-        endPos = new Vector3 (-SpawnPos.x, SpawnPos.y,SpawnPos.z);
+        endPos = new Vector3 (-SpawnPos.x, SpawnPos.y, SpawnPos.z);
+
+        endypos = new Vector3(0,1,0);
 
         EasySize = new Vector3 (EasyScale, 0.06f, EasyScale);
         MediumSize = new Vector3 (MediumScale, 0.06f, MediumScale);
@@ -63,6 +69,8 @@ public class TargetLogic : MonoBehaviour
         percentageComplete = elapsedtime / desiredtime;
 
         transform.position = Vector3.Lerp(SpawnPos, endPos, percentageComplete);
+
+        //transform.localPosition = Vector3.Slerp(startypos, , percentageComplete);
 
         if (percentageComplete >= 1 || GameObject.Find("Round Manager").GetComponent<RoundLogic>().roundactive == false)
         {
