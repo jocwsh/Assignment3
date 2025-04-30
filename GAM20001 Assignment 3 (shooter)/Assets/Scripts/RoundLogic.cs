@@ -8,7 +8,7 @@ using TMPro;
 
 public class RoundLogic : MonoBehaviour
 {
-    private int roundnumber = 1;
+    private int roundnumber = 0;
     public float roundtime;
     private float roundcountdown;
     public bool roundactive = false;
@@ -16,18 +16,29 @@ public class RoundLogic : MonoBehaviour
     public GameObject btnNextRound;
 
     private float thresholdscore;
-    private float exponent;
+    //private float exponent;
 
     private TextMeshPro timertext;
+
+    private float[] thresholdcuttoff;
+
+    private float playscore;
 
     void Start()
     {
         roundcountdown = roundtime;
         timertext = GetComponent<TextMeshPro>();
+
+        //threshold is currently an array but can be a formula later
+        thresholdcuttoff = new float [6] {500, 800, 1200, 1800, 2500, 3500};
+
+        
     }
 
     void Update()
     {
+
+        playscore = GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().score;
 
         if (roundactive == false)
         {
@@ -49,6 +60,8 @@ public class RoundLogic : MonoBehaviour
                 */
 
                 //sets button bool back to false 
+
+                
                 
                 btnNextRound.GetComponent<buttonmanager>().makefalse();
             }
@@ -61,6 +74,8 @@ public class RoundLogic : MonoBehaviour
             
             //moves off screen
             btnNextRound.GetComponent<RectTransform>().localPosition = new Vector2(0, 500);
+
+            thresholdscore = thresholdcuttoff[roundnumber];
 
             playround();
         }
@@ -78,21 +93,40 @@ public class RoundLogic : MonoBehaviour
 
 
         //this is for checking threshold
-        //if (roundcountdown < 0 && score >= thresholdscore)
+        
         if (roundcountdown < 0)
         {
-            roundactive = false;
-            roundnumber += 1;
+            if (playscore >= thresholdscore)
+            {
+                roundactive = false;
+                roundnumber += 1;
 
-            Debug.Log(roundnumber);
+                Debug.Log (thresholdscore);
 
-            //makes button interactable
-            btnNextRound.GetComponent<Button>().interactable = true;
+                Debug.Log (playscore);
 
-            //moves back on screen
-            btnNextRound.GetComponent<RectTransform>().localPosition = new Vector2 (0, 0);
+                Debug.Log("you win");
+            
+
+                //makes button interactable
+                btnNextRound.GetComponent<Button>().interactable = true;
+
+                //moves back on screen
+                btnNextRound.GetComponent<RectTransform>().localPosition = new Vector2 (0, 0);
+            }
+
+            else
+            {
+                //put lose menu here
+                Debug.Log (thresholdscore);
+                roundactive = false;
+                Debug.Log (playscore);
+                Debug.Log ("you lose");
+            }
+            
 
         }
+
     }
        
 }

@@ -986,7 +986,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4492a67e9ae3cba43a2999f7d0383e0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roundtime: 20
+  roundtime: 15
   roundactive: 1
   btnNextRound: {fileID: 515260478}
 --- !u!224 &1933384256
