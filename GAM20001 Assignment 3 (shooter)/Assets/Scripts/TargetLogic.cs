@@ -2,17 +2,21 @@ using UnityEngine;
 
 public class TargetLogic : MonoBehaviour
 {
+    public float speed;
+
+    private bool rightspawn = false;
+    private float spawnx;
     private float elapsedtime;
-    public float desiredtime;
-    private float percentageComplete;
 
-    private Vector3 SpawnPos;
-    private Vector3 endPos;
+    private float ymov;
+    public float ymovamp;
+    public float ymovfrequency;
+    private float phaseshift;
 
-    private Vector3 startypos = new Vector3 (0,0,0);
-    private Vector3 endypos;
+    //private float randommult = 0.1f;
 
 
+    //if changing size is for all then just do a global scale multiplier
     public float EasyScale, MediumScale, HardScale;
     private Vector3 EasySize, MediumSize, HardSize;
     
@@ -27,21 +31,29 @@ public class TargetLogic : MonoBehaviour
     private int mediumchance = 30;
     private int easychance = 50;
 
+    private Rigidbody rb;
+
 
 
     void Start()
     {
-        SpawnPos = transform.position;
-        
-        endPos = new Vector3 (-SpawnPos.x, SpawnPos.y, SpawnPos.z);
+        rb = GetComponent<Rigidbody>();
 
-        endypos = new Vector3(0,1,0);
+
+        if (transform.position.x > 0)
+        {
+            rightspawn = true;
+        }
+
+        spawnx = transform.position.x;
+        
 
         EasySize = new Vector3 (EasyScale, 0.06f, EasyScale);
         MediumSize = new Vector3 (MediumScale, 0.06f, MediumScale);
         HardSize = new Vector3 (HardScale, 0.06f, HardScale);
 
 
+        //for type of target
         targetroll = Random.Range (0, hardchance + mediumchance + hardchance);
 
         if (targetroll >= hardchance + mediumchance && targetroll <= hardchance + mediumchance + easychance)
@@ -58,29 +70,48 @@ public class TargetLogic : MonoBehaviour
         {
             transform.localScale = HardSize;
             HardTarget = true;
-        }
-           
+        } 
+
+        phaseshift = Random.Range(0, 2*Mathf.PI/ymovfrequency);
+        
+        //dont make randomness into modifier (too stiff otherwise)
+        //maybe calculate randomness through multiplication
+        ymovamp = Random.Range(ymovamp - 0.7f, ymovamp + 0.7f);
+        ymovfrequency = Random.Range(ymovfrequency - 1.5f, ymovfrequency + 1.5f);
     }
 
     void Update()
     {
-        //timer for target speed and destroying
-        elapsedtime += Time.deltaTime;
-        percentageComplete = elapsedtime / desiredtime;
-
-        transform.position = Vector3.Lerp(SpawnPos, endPos, percentageComplete);
-
-        //transform.localPosition = Vector3.Slerp(startypos, , percentageComplete);
-
-        if (percentageComplete >= 1 || GameObject.Find("Round Manager").GetComponent<RoundLogic>().roundactive == false)
+        
+        if (transform.position.x >= -spawnx && rightspawn == false || transform.position.x <= -spawnx && rightspawn == true || GameObject.Find("Round Manager").GetComponent<RoundLogic>().roundactive == false)
         {
             Destroy(gameObject);
         }
     }
 
+    void FixedUpdate()
+    {
+        elapsedtime += Time.deltaTime;
+
+        //add some randomness here (too stiff)
+        ymov = ymovamp * Mathf.Sin(ymovfrequency * (elapsedtime + phaseshift));
+
+        if (rightspawn == false)
+        {
+            rb.linearVelocity = new Vector3 (speed, ymov, 0);
+        }
+
+        if (rightspawn == true)
+        {
+            rb.linearVelocity = new Vector3 (-speed, ymov, 0);
+        }  
+    }
+
     void OnCollisionEnter(Collision collision)
     {
         //link to score here
+
+
         //maybe also add text to show how many points a target actually is
         if (EasyTarget == true)
         {
@@ -96,7 +127,7 @@ public class TargetLogic : MonoBehaviour
         }
         
 
-        //play destroy animation here
+        //play destroy animation here (maybe put destroy in coroutine)
         Destroy(gameObject);
     }
 }

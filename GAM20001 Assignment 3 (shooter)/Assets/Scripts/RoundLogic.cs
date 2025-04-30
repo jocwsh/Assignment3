@@ -16,15 +16,13 @@ public class RoundLogic : MonoBehaviour
     public GameObject btnNextRound;
 
     private float thresholdscore;
-    //private float exponent;
-
-
-    //defs make timer into its own object later when model in game
-    private TextMeshPro timertext;
 
     private float[] thresholdcuttoff;
 
     private float playscore;
+
+    //defs make timer into its own object later when model in game
+    private TextMeshPro timertext;
 
     void Start()
     {
@@ -33,7 +31,6 @@ public class RoundLogic : MonoBehaviour
 
         //threshold is currently an array but can be a formula later
         thresholdcuttoff = new float [6] {500, 800, 1200, 1800, 2500, 3500};
-
     }
 
     void Update()
@@ -100,9 +97,6 @@ public class RoundLogic : MonoBehaviour
                 roundnumber += 1;
 
                 Debug.Log (thresholdscore);
-
-                Debug.Log (playscore);
-
                 Debug.Log("you win");
             
 
@@ -116,9 +110,9 @@ public class RoundLogic : MonoBehaviour
             else
             {
                 //put lose sequence here
-                Debug.Log (thresholdscore);
                 roundactive = false;
-                Debug.Log (playscore);
+
+                Debug.Log (thresholdscore);
                 Debug.Log ("you lose");
             }
             
