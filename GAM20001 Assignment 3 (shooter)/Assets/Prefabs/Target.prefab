@@ -125,7 +125,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2.5
-  ymovamp: 1.5
+  maxymovamp: 1.5
+  minymovamp: 0.15
   ymovfrequency: 4
   EasyScale: 1.2
   MediumScale: 1

@@ -2,14 +2,16 @@ using UnityEngine;
 
 public class TargetLogic : MonoBehaviour
 {
-    public float speed;
+    public float speed; 
+    private float randomisedspeed;
 
     private bool rightspawn = false;
     private float spawnx;
     private float elapsedtime;
 
     private float ymov;
-    public float ymovamp;
+    public float maxymovamp;
+    public float minymovamp;
     public float ymovfrequency;
     private float phaseshift;
 
@@ -38,6 +40,8 @@ public class TargetLogic : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        randomisedspeed = Random.Range (speed - 0.15f, speed +0.15f);
 
 
         if (transform.position.x > 0)
@@ -71,13 +75,13 @@ public class TargetLogic : MonoBehaviour
             transform.localScale = HardSize;
             HardTarget = true;
         } 
+        
+        //dont make randomness into modifier (too stiff otherwise (can do maxymovamp))
+        //maybe calculate randomness through multiplication but this works
+        maxymovamp = Random.Range(minymovamp, maxymovamp);
+        ymovfrequency = Random.Range(ymovfrequency - 1.5f, ymovfrequency + 1.5f);
 
         phaseshift = Random.Range(0, 2*Mathf.PI/ymovfrequency);
-        
-        //dont make randomness into modifier (too stiff otherwise)
-        //maybe calculate randomness through multiplication
-        ymovamp = Random.Range(ymovamp - 0.7f, ymovamp + 0.7f);
-        ymovfrequency = Random.Range(ymovfrequency - 1.5f, ymovfrequency + 1.5f);
     }
 
     void Update()
@@ -94,17 +98,29 @@ public class TargetLogic : MonoBehaviour
         elapsedtime += Time.deltaTime;
 
         //add some randomness here (too stiff)
-        ymov = ymovamp * Mathf.Sin(ymovfrequency * (elapsedtime + phaseshift));
+        ymov = maxymovamp * Mathf.Sin(ymovfrequency * (elapsedtime + phaseshift));
 
         if (rightspawn == false)
         {
-            rb.linearVelocity = new Vector3 (speed, ymov, 0);
+            rb.linearVelocity = new Vector3 (randomisedspeed, ymov, 0);
         }
 
         if (rightspawn == true)
         {
-            rb.linearVelocity = new Vector3 (-speed, ymov, 0);
+            rb.linearVelocity = new Vector3 (-randomisedspeed, ymov, 0);
         }  
+
+        //if want to change wave after 1 period then do something like
+        /*if (elapsedtime > waveperiod)
+        {
+            calculatewave();
+        }
+
+        calculatewave()
+        {
+            blah blah blah
+        }
+        */
     }
 
     void OnCollisionEnter(Collision collision)
