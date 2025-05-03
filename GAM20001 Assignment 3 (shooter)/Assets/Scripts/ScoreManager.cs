@@ -26,7 +26,7 @@ public class ScoreManager : MonoBehaviour
     {
         scoremult = GameObject.Find("ItemSystem").GetComponent<ItemSystem>().scoremultiplier;
 
-        if (GameObject.Find("-diff").GetComponent<buttonmanager>().buttonpressed == true || GameObject.Find("+diff").GetComponent<buttonmanager>().buttonpressed == true)
+        if (GameObject.Find("-diff").GetComponent<negbuttonmanager>().buttonpressed == true || GameObject.Find("+diff").GetComponent<posbuttonmanager>().buttonpressed == true)
         {
             score = 0;
         }

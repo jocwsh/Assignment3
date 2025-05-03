@@ -4,9 +4,6 @@ using UnityEngine;
 public class ItemSystem : MonoBehaviour
 {
     public float scoremultiplier;
-
-    public GameObject easybutton;
-    public GameObject hardbutton;
     
     private bool speedselected;
     private int selectedcounter;
@@ -28,37 +25,28 @@ public class ItemSystem : MonoBehaviour
     //maybe use a list
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    //im pretty sure this is broke
+    public void posbutton()
     {
-        
+        speedcounter += 1;
+        speedmod = speedmod * speedcounter;
+        finalspeedmod = 1 + speedmod ;
+
+        //scoremultiplier doesnt work
+        scoremultiplier = scoremultiplier + speedmult;
+
+        Debug.Log (speedmod);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void negbutton()
     {
+        speedcounter -= 1;
+        finalspeedmod = 1 + speedmod * speedcounter;
 
 
-        if (hardbutton.GetComponent<buttonmanager>().buttonpressed == true)
-        {
-            speedcounter += 1;
-            speedmod = speedmod * speedcounter;
-            finalspeedmod = 1 + speedmod ;
+        //scoremultiplier doesnt work
+        scoremultiplier = scoremultiplier + speedmult;
 
-            scoremultiplier = scoremultiplier + speedmult;
-
-            Debug.Log (speedcounter);
-        }
-
-        if (easybutton.GetComponent<buttonmanager>().buttonpressed == true)
-        {
-            speedcounter -= 1;
-            speedmod = speedmod * speedcounter;
-            finalspeedmod = 1 + speedmod ;
-
-            scoremultiplier = scoremultiplier + speedmult;
-
-            Debug.Log (speedcounter);
-        }
+        Debug.Log (finalspeedmod);
     }
 }

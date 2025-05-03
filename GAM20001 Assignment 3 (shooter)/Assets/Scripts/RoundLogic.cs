@@ -36,47 +36,31 @@ public class RoundLogic : MonoBehaviour
 
     void Update()
     {
+        /*This is me trying to figure out the threshold, it doesnt work
+        exponent = (roundnumber + 10) / 10;
+        Debug.Log (exponent);
+        thresholdscore = math.pow (40, exponent);*/
+
         if (roundactive == false)
         {
-            roundactive = hardbutton.GetComponent<buttonmanager>().buttonpressed;
             roundcountdown = roundtime;
             timertext.text = "0.000";
-
-            if (hardbutton.GetComponent<buttonmanager>().buttonpressed == true || easybutton.GetComponent<buttonmanager>().buttonpressed == true)
-            {
-                roundactive = true;
-                hardbutton.GetComponent<buttonmanager>().buttonpressed = false;
-                easybutton.GetComponent<buttonmanager>().buttonpressed = false;
-
-
-                /* This is me trying to figure out the threshold, it doesnt work
-                exponent = (roundnumber + 10) / 10;
-                Debug.Log (exponent);
-                thresholdscore = math.pow (40, exponent);
-
-                Debug.Log (thresholdscore);
-                */
-
-                //sets button bool back to false 
-                hardbutton.GetComponent<buttonmanager>().makefalse();
-                easybutton.GetComponent<buttonmanager>().makefalse();
-            }
         }
 
-        if (roundactive == true)
+        
+
+        if(roundactive == true)
         {
-            //makes button uninteractable
-            hardbutton.GetComponent<Button>().interactable = false;
-            easybutton.GetComponent<Button>().interactable = false;
-            
-            //moves off screen (maybe change it to being invisible????)
-            hardbutton.GetComponent<RectTransform>().localPosition = new Vector2(0, 500);
-            easybutton.GetComponent<RectTransform>().localPosition = new Vector2(0, 500);
-
-            thresholdscore = thresholdcuttoff[roundnumber];
-
             playround();
         }
+
+    }
+
+    public void buttonclicked()
+    {
+        roundnumber += 1;
+        roundactive= true;
+        thresholdscore = thresholdcuttoff[roundnumber];
     }
 
 
@@ -100,19 +84,11 @@ public class RoundLogic : MonoBehaviour
             {
                 //win sequence
                 roundactive = false;
-                roundnumber += 1;
+                
 
                 Debug.Log (thresholdscore);
                 Debug.Log("you win");
-            
-
-                //makes button interactable
-                hardbutton.GetComponent<Button>().interactable = true;
-                easybutton.GetComponent<Button>().interactable = true;
-
-                //moves back on screen
-                hardbutton.GetComponent<RectTransform>().localPosition = new Vector2 (210, 0);
-                easybutton.GetComponent<RectTransform>().localPosition = new Vector2 (-210, 0);
+        
             }
 
             else
