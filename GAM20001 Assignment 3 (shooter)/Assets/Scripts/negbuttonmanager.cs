@@ -18,7 +18,7 @@ public class negbuttonmanager : MonoBehaviour
 
     void Update()
     {
-        roundactive = GameObject.Find("Round Manager").GetComponent<RoundLogic>().roundactive;
+        roundactive = GameObject.Find("RoundSystem").GetComponent<RoundLogic>().roundactive;
 
         if (roundactive == true)
         {
@@ -36,8 +36,9 @@ public class negbuttonmanager : MonoBehaviour
     public void selected()
     {
         //buttonpressed = true;
-        GameObject.Find("Round Manager").GetComponent<RoundLogic>().buttonclicked();
+        GameObject.Find("RoundSystem").GetComponent<RoundLogic>().buttonclicked();
         GameObject.Find("ItemSystem").GetComponent<ItemSystem>().negbutton();
+        GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().newround();
         
     }
     

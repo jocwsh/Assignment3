@@ -32,10 +32,10 @@ public class ItemSystem : MonoBehaviour
         speedmod = speedmod * speedcounter;
         finalspeedmod = 1 + speedmod ;
 
-        //scoremultiplier doesnt work
-        scoremultiplier = scoremultiplier + speedmult;
+        //do score multiplier differently
+        scoremultiplier = scoremultiplier *1.1f;
 
-        Debug.Log (speedmod);
+        Debug.Log (scoremultiplier);
     }
 
     public void negbutton()
@@ -44,9 +44,9 @@ public class ItemSystem : MonoBehaviour
         finalspeedmod = 1 + speedmod * speedcounter;
 
 
-        //scoremultiplier doesnt work
-        scoremultiplier = scoremultiplier + speedmult;
+        //do score multiplier differently
+        scoremultiplier = scoremultiplier * 0.9f;
 
-        Debug.Log (finalspeedmod);
+        Debug.Log (scoremultiplier);
     }
 }

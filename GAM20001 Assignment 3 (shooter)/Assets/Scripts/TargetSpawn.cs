@@ -12,7 +12,7 @@ public class TargetSpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("Round Manager").GetComponent<RoundLogic>().roundactive == true)
+        if (GameObject.Find("RoundSystem").GetComponent<RoundLogic>().roundactive == true)
         {
             countdown -= Time.deltaTime;
             if (countdown < 0)
@@ -21,7 +21,7 @@ public class TargetSpawn : MonoBehaviour
                 randomspawn();
             } 
         }
-        if (GameObject.Find("Round Manager").GetComponent<RoundLogic>().roundactive == false)
+        if (GameObject.Find("RoundSystem").GetComponent<RoundLogic>().roundactive == false)
         {
             countdown = 0;
         }

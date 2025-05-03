@@ -92,7 +92,7 @@ public class TargetLogic : MonoBehaviour
     void Update()
     {
         //probs fix this up next
-        if (transform.position.x >= -spawnx && rightspawn == false || transform.position.x <= -spawnx && rightspawn == true || GameObject.Find("Round Manager").GetComponent<RoundLogic>().roundactive == false)
+        if (transform.position.x >= -spawnx && rightspawn == false || transform.position.x <= -spawnx && rightspawn == true || GameObject.Find("RoundSystem").GetComponent<RoundLogic>().roundactive == false)
         {
             Destroy(gameObject);
         }

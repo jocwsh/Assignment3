@@ -17,7 +17,7 @@ public class posbuttonmanager : MonoBehaviour
 
     void Update()
     {
-        roundactive = GameObject.Find("Round Manager").GetComponent<RoundLogic>().roundactive;
+        roundactive = GameObject.Find("RoundSystem").GetComponent<RoundLogic>().roundactive;
 
         if (roundactive == true)
         {
@@ -34,9 +34,10 @@ public class posbuttonmanager : MonoBehaviour
     public void selected()
     {
         //buttonpressed = true;
-        GameObject.Find("Round Manager").GetComponent<RoundLogic>().buttonclicked();
+        GameObject.Find("RoundSystem").GetComponent<RoundLogic>().buttonclicked();
         btn.interactable = false;
-        GameObject.Find("ItemManager").GetComponent<ItemSystem>().posbutton();
+        GameObject.Find("ItemSystem").GetComponent<ItemSystem>().posbutton();
+        GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().newround();
     }
     
     public void makefalse()

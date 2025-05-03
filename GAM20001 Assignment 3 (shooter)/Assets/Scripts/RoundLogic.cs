@@ -32,22 +32,17 @@ public class RoundLogic : MonoBehaviour
 
         //threshold is currently an array but can be a formula later
         thresholdcuttoff = new float [6] {500, 800, 1200, 1800, 2500, 3500};
+        thresholdscore = thresholdcuttoff[0];
     }
 
     void Update()
     {
-        /*This is me trying to figure out the threshold, it doesnt work
-        exponent = (roundnumber + 10) / 10;
-        Debug.Log (exponent);
-        thresholdscore = math.pow (40, exponent);*/
-
         if (roundactive == false)
         {
             roundcountdown = roundtime;
             timertext.text = "0.000";
         }
 
-        
 
         if(roundactive == true)
         {
@@ -61,6 +56,7 @@ public class RoundLogic : MonoBehaviour
         roundnumber += 1;
         roundactive= true;
         thresholdscore = thresholdcuttoff[roundnumber];
+
     }
 
 
@@ -93,14 +89,13 @@ public class RoundLogic : MonoBehaviour
 
             else
             {
-                //put lose sequence here
                 roundactive = false;
+                //do gameover = true instead of ^^
 
                 Debug.Log (thresholdscore);
                 Debug.Log ("you lose");
             }
             
-
         }
 
     }

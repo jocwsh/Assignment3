@@ -1299,7 +1299,7 @@ GameObject:
   - component: {fileID: 1933384258}
   - component: {fileID: 1933384257}
   m_Layer: 0
-  m_Name: Round Manager
+  m_Name: RoundSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
