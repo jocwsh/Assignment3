@@ -3,6 +3,7 @@ using UnityEngine;
 public class TargetLogic : MonoBehaviour
 {
     public float speed; 
+    private float speedmod;
     private float randomisedspeed;
 
     private bool rightspawn = false;
@@ -41,7 +42,13 @@ public class TargetLogic : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
-        randomisedspeed = Random.Range (speed - 0.15f, speed +0.15f);
+        speedmod = GameObject.Find("ItemSystem").GetComponent<ItemSystem>().finalspeedmod;
+        
+        speed = speed * speedmod;
+
+        Debug.Log (speed);
+
+        randomisedspeed = Random.Range (speed - 0.15f, speed + 0.15f);
 
 
         if (transform.position.x > 0)
@@ -126,8 +133,6 @@ public class TargetLogic : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         //link to score here
-
-
         //maybe also add text to show how many points a target actually is
         if (EasyTarget == true)
         {

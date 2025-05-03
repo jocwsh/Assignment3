@@ -104,7 +104,7 @@ public class RoundLogic : MonoBehaviour
                 btnNextRound.GetComponent<Button>().interactable = true;
 
                 //moves back on screen
-                btnNextRound.GetComponent<RectTransform>().localPosition = new Vector2 (0, 0);
+                btnNextRound.GetComponent<RectTransform>().localPosition = new Vector2 (210, 0);
             }
 
             else

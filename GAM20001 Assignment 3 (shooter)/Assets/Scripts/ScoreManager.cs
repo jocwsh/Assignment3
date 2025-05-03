@@ -9,7 +9,7 @@ public class ScoreManager : MonoBehaviour
 
     //for laters maybe
     //public float easymult, mediummult, hardmult;
-    public float globalmult;
+    private float scoremult;
 
     //defs make score into its own object later when scoreboard model in game
     private TextMeshPro scoretext;
@@ -18,11 +18,13 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         scoretext = GetComponent<TextMeshPro>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        scoremult = GameObject.Find("ItemSystem").GetComponent<ItemSystem>().scoremultiplier;
 
         if (GameObject.Find("Button").GetComponent<buttonmanager>().buttonpressed == true)
         {
@@ -33,14 +35,17 @@ public class ScoreManager : MonoBehaviour
 
     public void easyhit()
     {
-        score += 50 * globalmult; 
+        score += 50 * scoremult; 
+        Debug.Log (score);
     }
     public void mediumhit()
     {
-        score += 80 * globalmult;
+        score += 80 * scoremult;
+        Debug.Log (score);
     }
     public void hardhit()
     {
-        score += 100 * globalmult;
+        score += 100 * scoremult;
+        Debug.Log (score);
     }
 }
