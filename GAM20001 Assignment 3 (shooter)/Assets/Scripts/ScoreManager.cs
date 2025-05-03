@@ -26,7 +26,7 @@ public class ScoreManager : MonoBehaviour
     {
         scoremult = GameObject.Find("ItemSystem").GetComponent<ItemSystem>().scoremultiplier;
 
-        if (GameObject.Find("Button").GetComponent<buttonmanager>().buttonpressed == true)
+        if (GameObject.Find("-diff").GetComponent<buttonmanager>().buttonpressed == true || GameObject.Find("+diff").GetComponent<buttonmanager>().buttonpressed == true)
         {
             score = 0;
         }
@@ -36,16 +36,13 @@ public class ScoreManager : MonoBehaviour
     public void easyhit()
     {
         score += 50 * scoremult; 
-        Debug.Log (score);
     }
     public void mediumhit()
     {
         score += 80 * scoremult;
-        Debug.Log (score);
     }
     public void hardhit()
     {
         score += 100 * scoremult;
-        Debug.Log (score);
     }
 }

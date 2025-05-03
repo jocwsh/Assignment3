@@ -13,7 +13,8 @@ public class RoundLogic : MonoBehaviour
     private float roundcountdown;
     public bool roundactive = false;
 
-    public GameObject btnNextRound;
+    public GameObject hardbutton;
+    public GameObject easybutton;
 
     private float thresholdscore;
 
@@ -37,14 +38,16 @@ public class RoundLogic : MonoBehaviour
     {
         if (roundactive == false)
         {
-            roundactive = btnNextRound.GetComponent<buttonmanager>().buttonpressed;
+            roundactive = hardbutton.GetComponent<buttonmanager>().buttonpressed;
             roundcountdown = roundtime;
             timertext.text = "0.000";
 
-            if (btnNextRound.GetComponent<buttonmanager>().buttonpressed == true)
+            if (hardbutton.GetComponent<buttonmanager>().buttonpressed == true || easybutton.GetComponent<buttonmanager>().buttonpressed == true)
             {
                 roundactive = true;
-                btnNextRound.GetComponent<buttonmanager>().buttonpressed = false;
+                hardbutton.GetComponent<buttonmanager>().buttonpressed = false;
+                easybutton.GetComponent<buttonmanager>().buttonpressed = false;
+
 
                 /* This is me trying to figure out the threshold, it doesnt work
                 exponent = (roundnumber + 10) / 10;
@@ -55,17 +58,20 @@ public class RoundLogic : MonoBehaviour
                 */
 
                 //sets button bool back to false 
-                btnNextRound.GetComponent<buttonmanager>().makefalse();
+                hardbutton.GetComponent<buttonmanager>().makefalse();
+                easybutton.GetComponent<buttonmanager>().makefalse();
             }
         }
 
         if (roundactive == true)
         {
             //makes button uninteractable
-            btnNextRound.GetComponent<Button>().interactable = false;
+            hardbutton.GetComponent<Button>().interactable = false;
+            easybutton.GetComponent<Button>().interactable = false;
             
             //moves off screen (maybe change it to being invisible????)
-            btnNextRound.GetComponent<RectTransform>().localPosition = new Vector2(0, 500);
+            hardbutton.GetComponent<RectTransform>().localPosition = new Vector2(0, 500);
+            easybutton.GetComponent<RectTransform>().localPosition = new Vector2(0, 500);
 
             thresholdscore = thresholdcuttoff[roundnumber];
 
@@ -101,10 +107,12 @@ public class RoundLogic : MonoBehaviour
             
 
                 //makes button interactable
-                btnNextRound.GetComponent<Button>().interactable = true;
+                hardbutton.GetComponent<Button>().interactable = true;
+                easybutton.GetComponent<Button>().interactable = true;
 
                 //moves back on screen
-                btnNextRound.GetComponent<RectTransform>().localPosition = new Vector2 (210, 0);
+                hardbutton.GetComponent<RectTransform>().localPosition = new Vector2 (210, 0);
+                easybutton.GetComponent<RectTransform>().localPosition = new Vector2 (-210, 0);
             }
 
             else

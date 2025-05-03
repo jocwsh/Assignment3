@@ -46,9 +46,7 @@ public class TargetLogic : MonoBehaviour
         
         speed = speed * speedmod;
 
-        Debug.Log (speed);
-
-        randomisedspeed = Random.Range (speed - 0.15f, speed + 0.15f);
+        randomisedspeed = Random.Range (speed * 0.9f , speed * 1.1f);
 
 
         if (transform.position.x > 0)
