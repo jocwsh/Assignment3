@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class TargetLogic : MonoBehaviour
@@ -36,11 +37,14 @@ public class TargetLogic : MonoBehaviour
 
     private Rigidbody rb;
 
+    private Renderer colour;
+
 
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        colour = GetComponent<Renderer>();
 
         speedmod = GameObject.Find("ItemSystem").GetComponent<ItemSystem>().finalspeedmod;
         
@@ -145,8 +149,17 @@ public class TargetLogic : MonoBehaviour
             GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().hardhit();
         }
         
+        StartCoroutine(despawn());
+        colour.material.color = new Color(255, 0, 0);
 
         //play destroy animation here (maybe put destroy in coroutine)
+        
+    }
+
+    private IEnumerator despawn()
+    {
+        yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
+
     }
 }
