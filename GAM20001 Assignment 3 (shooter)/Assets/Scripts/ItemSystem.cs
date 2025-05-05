@@ -1,9 +1,11 @@
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class ItemSystem : MonoBehaviour
 {
     public float scoremultiplier;
+    public List <float> multlist = new List<float>();
     
     private bool speedselected;
     private int selectedcounter;
