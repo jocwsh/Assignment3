@@ -5,7 +5,7 @@ public class timemod : MonoBehaviour
 
     public float timeadd;
 
-    public void speed()
+    public void modtime()
     {
         timeadd += 5f;
     }

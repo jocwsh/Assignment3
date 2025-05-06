@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class throwObject : MonoBehaviour
 {
@@ -12,8 +13,8 @@ public class throwObject : MonoBehaviour
     public float throwForce;
     public float throwUpwardForce;
 
-    private void Start ()
-    { 
+    private void Start()
+    {
 
     }
 
@@ -21,7 +22,7 @@ public class throwObject : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Throw ();
+            Throw();
             Debug.Log("throwing ball");
         }
     }
@@ -36,7 +37,7 @@ public class throwObject : MonoBehaviour
 
         RaycastHit hit;
 
-        if(Physics.Raycast(camera.position, camera.forward, out hit, 500f))
+        if (Physics.Raycast(camera.position, camera.forward, out hit, 500f))
         {
             forceDirection = (hit.point - throwPoint.position).normalized;
         }
@@ -46,5 +47,4 @@ public class throwObject : MonoBehaviour
         projectileRB.AddForce(forceToAdd, ForceMode.Impulse);
 
     }
-
 }

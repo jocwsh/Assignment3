@@ -60,16 +60,17 @@ public class RoundLogic : MonoBehaviour
         thresholdscore = thresholdcuttoff[roundnumber];
 
 
-        //this needs to be put in the right spot
-        timeadd = GameObject.Find("timemod").GetComponent<timemod>().timeadd;
-
-        roundcountdown += timeadd;
+  
 
     }
 
 
     void playround()
     {
+        //this needs to be put in the right spot
+        timeadd = GameObject.Find("timemod").GetComponent<timemod>().timeadd;
+
+        roundcountdown += timeadd;
 
         roundcountdown -= Time.deltaTime;
         //maybe cut off some decimals at the end here
