@@ -257,7 +257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8381619106254810884, guid: 61a354d710322fb4a9342a45175409e3, type: 3}
       propertyPath: throwForce
-      value: 100
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8752675340117708692, guid: 61a354d710322fb4a9342a45175409e3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -481,6 +481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoremultiplier: 1
+  multlist: []
   finalspeedmod: 1
   finalsizemod: 0
 --- !u!4 &916573267
