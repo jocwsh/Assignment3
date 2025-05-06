@@ -128,7 +128,7 @@ MonoBehaviour:
   throwPoint: {fileID: 3107880908462268881}
   throwingObject: {fileID: 7407803379511501638, guid: f87b434fd5e3e8e409ce1cb8dff785cc, type: 3}
   throwRate: 0.5
-  throwForce: 100
+  throwForce: 20
   throwUpwardForce: 0
 --- !u!1 &8183602844792659735
 GameObject:
@@ -312,5 +312,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c9a7e902ebb0b24c9bb8e379128223f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 100
+  mouseSensitivity: 500
   playerBody: {fileID: 8752675340117708692}

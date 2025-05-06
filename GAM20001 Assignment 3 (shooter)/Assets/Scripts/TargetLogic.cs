@@ -95,6 +95,7 @@ public class TargetLogic : MonoBehaviour
         ymovfrequency = Random.Range(ymovfrequency - 1.5f, ymovfrequency + 1.5f);
 
         phaseshift = Random.Range(0, 2*Mathf.PI/ymovfrequency);
+
     }
 
     void Update()
