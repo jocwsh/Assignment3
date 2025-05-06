@@ -22,6 +22,8 @@ public class RoundLogic : MonoBehaviour
 
     private float playscore;
 
+    private float timeadd;
+
     //defs make timer into its own object later when model in game
     private TextMeshPro timertext;
 
@@ -62,6 +64,10 @@ public class RoundLogic : MonoBehaviour
 
     void playround()
     {
+        timeadd = GameObject.Find("timemod").GetComponent<timemod>().timeadd;
+
+        roundcountdown += timeadd;
+
         roundcountdown -= Time.deltaTime;
         //maybe cut off some decimals at the end here
         timertext.text = roundcountdown.ToString("0.000");

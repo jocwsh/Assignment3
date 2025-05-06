@@ -4,7 +4,7 @@ using UnityEngine;
 public class TargetLogic : MonoBehaviour
 {
     public float speed; 
-    private float speedmod;
+    //private float speedmod;
     private float randomisedspeed;
 
     private bool rightspawn = false;
@@ -22,6 +22,7 @@ public class TargetLogic : MonoBehaviour
 
     //if changing size is for all then just do a global scale multiplier
     public float EasyScale, MediumScale, HardScale;
+    private float scalemult, speedmult;
     private Vector3 EasySize, MediumSize, HardSize;
     
 
@@ -43,12 +44,15 @@ public class TargetLogic : MonoBehaviour
 
     void Start()
     {
+        scalemult = GameObject.Find("sizemod").GetComponent<sizemod>().sizemult;
+        speedmult = GameObject.Find("speedmod").GetComponent<speedmod>().speedmult;
+
         rb = GetComponent<Rigidbody>();
         colour = GetComponent<Renderer>();
 
-        speedmod = GameObject.Find("ItemSystem").GetComponent<ItemSystem>().finalspeedmod;
+        //speedmod = GameObject.Find("ItemSystem").GetComponent<ItemSystem>().finalspeedmod;
         
-        speed = speed * speedmod;
+        speed = speed * speedmult;
 
         randomisedspeed = Random.Range (speed * 0.9f , speed * 1.1f);
 
@@ -61,9 +65,9 @@ public class TargetLogic : MonoBehaviour
         spawnx = transform.position.x;
         
 
-        EasySize = new Vector3 (EasyScale, 0.06f, EasyScale);
-        MediumSize = new Vector3 (MediumScale, 0.06f, MediumScale);
-        HardSize = new Vector3 (HardScale, 0.06f, HardScale);
+        EasySize = new Vector3 (EasyScale * scalemult, 0.06f, EasyScale * scalemult);
+        MediumSize = new Vector3 (MediumScale * scalemult, 0.06f, MediumScale * scalemult);
+        HardSize = new Vector3 (HardScale * scalemult, 0.06f, HardScale * scalemult);
 
 
         //for type of target
