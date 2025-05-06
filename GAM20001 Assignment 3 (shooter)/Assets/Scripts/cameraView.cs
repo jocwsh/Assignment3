@@ -10,24 +10,37 @@ public class cameraView : MonoBehaviour
     float xRotation = 0f;
     float yRotation = 0f;
 
+    private bool roundactive;
+
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        
     }
 
     void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        if (GameObject.Find("RoundSystem").GetComponent<RoundLogic>().roundactive == true)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
 
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        yRotation += mouseX;
-        yRotation = Mathf.Clamp(yRotation, -45f, 45f);
+            xRotation -= mouseY;
+            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        playerBody.localRotation = Quaternion.Euler(0f, yRotation, 0f);
+            yRotation += mouseX;
+            yRotation = Mathf.Clamp(yRotation, -45f, 45f);
+
+            transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+            playerBody.localRotation = Quaternion.Euler(0f, yRotation, 0f);
+        }
+
+        if (GameObject.Find("RoundSystem").GetComponent<RoundLogic>().roundactive == false)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+
 
     }
 }
