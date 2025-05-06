@@ -255,6 +255,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3107880908462268881, guid: 61a354d710322fb4a9342a45175409e3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.822
+      objectReference: {fileID: 0}
+    - target: {fileID: 3107880908462268881, guid: 61a354d710322fb4a9342a45175409e3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.682
+      objectReference: {fileID: 0}
+    - target: {fileID: 3107880908462268881, guid: 61a354d710322fb4a9342a45175409e3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.874
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734717387198673415, guid: 61a354d710322fb4a9342a45175409e3, type: 3}
+      propertyPath: mouseSensitivity
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 8381619106254810884, guid: 61a354d710322fb4a9342a45175409e3, type: 3}
       propertyPath: throwForce
       value: 30
