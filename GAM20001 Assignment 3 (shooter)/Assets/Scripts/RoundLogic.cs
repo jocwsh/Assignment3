@@ -10,7 +10,7 @@ public class RoundLogic : MonoBehaviour
 {
     private int roundnumber = 0;
     public float roundtime;
-    private float roundcountdown;
+    public float roundcountdown;
     public bool roundactive = false;
 
     public GameObject hardbutton;
@@ -24,13 +24,9 @@ public class RoundLogic : MonoBehaviour
 
     private float timeadd;
 
-    //defs make timer into its own object later when model in game
-    private TextMeshPro timertext;
-
     void Start()
     {
         roundcountdown = roundtime;
-        timertext = GetComponent<TextMeshPro>();
 
         //threshold is currently an array but can be a formula later
         thresholdcuttoff = new float [6] {500, 800, 1200, 1800, 2500, 3500};
@@ -42,7 +38,6 @@ public class RoundLogic : MonoBehaviour
         if (roundactive == false)
         {
             roundcountdown = roundtime;
-            timertext.text = "0.000";
         }
 
 
@@ -73,8 +68,6 @@ public class RoundLogic : MonoBehaviour
         roundcountdown += timeadd;
 
         roundcountdown -= Time.deltaTime;
-        //maybe cut off some decimals at the end here
-        timertext.text = roundcountdown.ToString("0.000");
 
         //logic for round in here
 
