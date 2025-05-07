@@ -22,8 +22,6 @@ public class RoundLogic : MonoBehaviour
 
     private float playscore;
 
-    private float timeadd;
-
     void Start()
     {
         roundcountdown = roundtime;
@@ -62,10 +60,6 @@ public class RoundLogic : MonoBehaviour
 
     void playround()
     {
-        //this needs to be put in the right spot
-        timeadd = GameObject.Find("timemod").GetComponent<timemod>().timeadd;
-
-        roundcountdown += timeadd;
 
         roundcountdown -= Time.deltaTime;
 

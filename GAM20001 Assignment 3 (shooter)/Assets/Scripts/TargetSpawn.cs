@@ -7,6 +7,9 @@ public class TargetSpawn : MonoBehaviour
     private float countdown = 0;
     private bool spawnactive;
 
+    private float spawntime = 1.5f;
+    private float spawntimemod;
+    private float randomiser = 0.2f;
     
 
     // Update is called once per frame
@@ -29,6 +32,7 @@ public class TargetSpawn : MonoBehaviour
 
     void randomspawn()
     {
-        countdown = Random.Range (1f,2f);
+        spawntimemod= GameObject.Find ("targetspawnmod").GetComponent<targetspawnmod>().spawntimemod;
+        countdown = Random.Range (spawntime * spawntimemod * (1f - randomiser) , spawntime * spawntimemod * (1f + randomiser));
     }
 }
