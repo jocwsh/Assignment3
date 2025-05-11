@@ -44,8 +44,8 @@ public class TargetLogic : MonoBehaviour
 
     void Start()
     {
-        scalemult = GameObject.Find("sizemod").GetComponent<sizemod>().sizemult;
-        speedmult = GameObject.Find("speedmod").GetComponent<speedmod>().speedmult;
+        scalemult = GameObject.Find("ModSystem").GetComponent<ModSystem>().sizemult;
+        speedmult = GameObject.Find("ModSystem").GetComponent<ModSystem>().speedmult;
 
         rb = GetComponent<Rigidbody>();
         colour = GetComponent<Renderer>();

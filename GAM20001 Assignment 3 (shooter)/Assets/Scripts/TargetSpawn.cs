@@ -32,7 +32,7 @@ public class TargetSpawn : MonoBehaviour
 
     void randomspawn()
     {
-        spawntimemod= GameObject.Find ("targetspawnmod").GetComponent<targetspawnmod>().spawntimemod;
+        spawntimemod= GameObject.Find ("ModSystem").GetComponent<ModSystem>().spawntimemod;
         countdown = Random.Range (spawntime * spawntimemod * (1f - randomiser) , spawntime * spawntimemod * (1f + randomiser));
     }
 }
