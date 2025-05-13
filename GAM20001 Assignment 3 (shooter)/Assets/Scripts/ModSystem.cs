@@ -4,7 +4,9 @@ public class ModSystem : MonoBehaviour
 {
     public float scoremult;
 
-
+    public float speedscoremult;
+    public float sizescoremult;
+    public float targetspawnfrequencyscoremult;
 
 
     public float speedmult;
@@ -14,15 +16,19 @@ public class ModSystem : MonoBehaviour
     {
         speedcounter += 1;
         speedmult = 1 + 0.2f * speedcounter;
+
+        speedscoremult = 0.25f * speedcounter;
+        calculatescoremult();
     }
 
     public void speedeasy()
     {
         speedcounter -= 1;
         speedmult = 1 + 0.2f * speedcounter;
+
+        speedscoremult = 0.25f * speedcounter;
+        calculatescoremult();
     }
-
-
 
 
     public float sizemult;
@@ -31,13 +37,19 @@ public class ModSystem : MonoBehaviour
     public void sizehard() //smaller size but more score
     {
         sizecounter -= 1;
-        sizemult = 1 + 0.1f * sizecounter;
+        sizemult = 1 + 0.2f * sizecounter;
+
+        sizescoremult =0.1f * sizecounter;
+        calculatescoremult();
     }
 
     public void sizeeasy()
     {
         sizecounter += 1;
-        sizemult = 1 + 0.1f * sizecounter;
+        sizemult = 1 + 0.2f * sizecounter;
+
+        sizescoremult = 0.1f * sizecounter;
+        calculatescoremult();
     }
 
 
@@ -49,12 +61,18 @@ public class ModSystem : MonoBehaviour
     {
         spawntimecounter -= 1;
         spawntimemod = 1 + 0.1f * - spawntimecounter;
+
+        targetspawnfrequencyscoremult = 0.15f * spawntimecounter;
+        calculatescoremult();
     }
 
     public void targetspawnfrequencyeasy()
     {
         spawntimecounter += 1;
         spawntimemod = 1 + 0.1f * - spawntimecounter;
+
+        targetspawnfrequencyscoremult = 0.15f * spawntimecounter;
+        calculatescoremult();
     }
 
     public float ballsizemod;
@@ -63,13 +81,24 @@ public class ModSystem : MonoBehaviour
     public void ballsizehard() //smaller ball size but more score
     {
         ballsizecounter -= 1;
-        ballsizemod = 1 + 0.1f *  ballsizecounter;
+        ballsizemod = 0.1f *  ballsizecounter;
+
+        calculatescoremult();
     }
 
     public void ballsizeeasy()
     {
         ballsizecounter += 1;
-        ballsizemod = 1 + 0.1f * ballsizecounter;
+        ballsizemod = 0.1f * ballsizecounter;
+
+        calculatescoremult();
+    }
+
+    private void calculatescoremult()
+    {
+        scoremult = 1 + sizescoremult + speedscoremult + targetspawnfrequencyscoremult;
+
+        GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().newround();
     }
 
 

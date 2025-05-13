@@ -134,7 +134,7 @@ public class ButtonRandomiser : MonoBehaviour
         modscript.speedhard();
 
         GameObject.Find("RoundSystem").GetComponent<RoundLogic>().buttonclicked();
-        GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().newround();
+    
     }
 
     void ModifierB()
@@ -143,7 +143,7 @@ public class ButtonRandomiser : MonoBehaviour
         modscript.speedeasy();
 
         GameObject.Find("RoundSystem").GetComponent<RoundLogic>().buttonclicked();
-        GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().newround();
+        
     }
 
     void ModifierC()
@@ -153,7 +153,7 @@ public class ButtonRandomiser : MonoBehaviour
         modscript.sizehard();
 
         GameObject.Find("RoundSystem").GetComponent<RoundLogic>().buttonclicked();
-        GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().newround();
+        
     }
 
     void ModifierD()
@@ -163,7 +163,7 @@ public class ButtonRandomiser : MonoBehaviour
         modscript.sizeeasy();
 
         GameObject.Find("RoundSystem").GetComponent<RoundLogic>().buttonclicked();
-        GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().newround();
+       
     }
 
     void ModifierE()
@@ -173,7 +173,7 @@ public class ButtonRandomiser : MonoBehaviour
         modscript.targetspawnfrequencyhard();
 
         GameObject.Find("RoundSystem").GetComponent<RoundLogic>().buttonclicked();
-        GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().newround();
+        
     }
 
     void ModifierF()
@@ -183,7 +183,7 @@ public class ButtonRandomiser : MonoBehaviour
         modscript.targetspawnfrequencyeasy();
 
         GameObject.Find("RoundSystem").GetComponent<RoundLogic>().buttonclicked();
-        GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().newround();
+        
     }
 
     /*void ModifierG()
