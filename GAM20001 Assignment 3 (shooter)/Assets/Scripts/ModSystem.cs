@@ -6,6 +6,25 @@ public class ModSystem : MonoBehaviour
 
 
 
+
+    public float speedmult;
+    public int speedcounter;
+
+    public void speedhard() //faster speed but more score
+    {
+        speedcounter += 1;
+        speedmult = 1 + 0.2f * speedcounter;
+    }
+
+    public void speedeasy()
+    {
+        speedcounter -= 1;
+        speedmult = 1 + 0.2f * speedcounter;
+    }
+
+
+
+
     public float sizemult;
     public int sizecounter;
 
@@ -19,23 +38,6 @@ public class ModSystem : MonoBehaviour
     {
         sizecounter += 1;
         sizemult = 1 + 0.1f * sizecounter;
-    }
-
-
-
-    public float speedmult;
-    public int speedcounter;
-   
-    public void speedhard() //faster speed but more score
-    {
-        speedcounter +=1;
-        speedmult = 1 + 0.1f * speedcounter;
-    }
-
-    public void speedeasy()
-    {
-        speedcounter -=1;
-        speedmult = 1 + 0.1f * speedcounter;
     }
 
 

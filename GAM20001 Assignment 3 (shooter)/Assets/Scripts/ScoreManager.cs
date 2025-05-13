@@ -31,7 +31,8 @@ public class ScoreManager : MonoBehaviour
     {
         score = 0;
 
-        scoremult = GameObject.Find("ItemSystem").GetComponent<ItemSystem>().scoremultiplier;
+        //connect to modsystem script here
+        //scoremult = GameObject.Find("ItemSystem").GetComponent<ItemSystem>().scoremultiplier;
     }
 
     public void easyhit()

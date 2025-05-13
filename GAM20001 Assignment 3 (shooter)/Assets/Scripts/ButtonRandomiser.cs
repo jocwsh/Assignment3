@@ -9,13 +9,28 @@ public class ButtonRandomiser : MonoBehaviour
 {
     public Button button1;
     public Button button2;
+    public Button button3;
+
+    private RectTransform butt1trans, butt2trans, butt3trans;
+
     public TMP_Text button1Text;
     public TMP_Text button2Text;
 
     private List<Modifier> availableModifiers;
 
+    private bool activeround;
+
+    private ModSystem modscript;
+    
+
     private void Start()
     {
+        butt1trans = button1.GetComponent<RectTransform>();
+        butt2trans = button2.GetComponent<RectTransform>();
+        butt3trans = button3.GetComponent<RectTransform>();
+
+        modscript = GameObject.Find ("ModSystem").GetComponent<ModSystem>();
+
         // Create list of function references
         availableModifiers = new List<Modifier>
         {
@@ -25,11 +40,37 @@ public class ButtonRandomiser : MonoBehaviour
             new Modifier("D", Color.green, ModifierD),
             new Modifier("E", Color.red, ModifierE),
             new Modifier("F", Color.green, ModifierF),
-            new Modifier("G", Color.red, ModifierG),
+            //new Modifier("G", Color.red, ModifierG),
         };
 
         AssignButtons();
 
+    }
+
+    private void Update()
+    {
+        activeround= GameObject.Find("RoundSystem").GetComponent<RoundLogic>().roundactive;
+
+        if (activeround == false)
+        {
+            butt1trans.transform.localPosition = new Vector2(-115, 0);
+            butt2trans.transform.localPosition = new Vector2(115, 0);
+            butt3trans.transform.localPosition = new Vector2(0, -110);
+
+            button1.interactable = true;
+            button2.interactable = true;   
+            button3.interactable = true;
+        }
+        else if (activeround == true)
+        {
+            butt1trans.transform.localPosition = new Vector2(5000, 0);
+            butt2trans.transform.localPosition = new Vector2(5000, 0);
+            butt3trans.transform.localPosition = new Vector2(5000, 0);
+
+            button1.interactable = false;
+            button2.interactable = false;
+            button3.interactable = false;
+        }   
     }
 
     [System.Serializable]
@@ -89,35 +130,69 @@ public class ButtonRandomiser : MonoBehaviour
     void ModifierA()
     {
         Debug.Log("Modifier A selected");
+
+        modscript.speedhard();
+
+        GameObject.Find("RoundSystem").GetComponent<RoundLogic>().buttonclicked();
+        GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().newround();
     }
 
     void ModifierB()
     {
         Debug.Log("Modifier B selected");
+        modscript.speedeasy();
+
+        GameObject.Find("RoundSystem").GetComponent<RoundLogic>().buttonclicked();
+        GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().newround();
     }
 
     void ModifierC()
     {
         Debug.Log("Modifier C selected");
+
+        modscript.sizehard();
+
+        GameObject.Find("RoundSystem").GetComponent<RoundLogic>().buttonclicked();
+        GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().newround();
     }
 
     void ModifierD()
     {
         Debug.Log("Modifier D selected");
+
+        modscript.sizeeasy();
+
+        GameObject.Find("RoundSystem").GetComponent<RoundLogic>().buttonclicked();
+        GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().newround();
     }
 
     void ModifierE()
     {
         Debug.Log("Modifier E selected");
+
+        modscript.targetspawnfrequencyhard();
+
+        GameObject.Find("RoundSystem").GetComponent<RoundLogic>().buttonclicked();
+        GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().newround();
     }
 
     void ModifierF()
     {
         Debug.Log("Modifier F selected");
+
+        modscript.targetspawnfrequencyeasy();
+
+        GameObject.Find("RoundSystem").GetComponent<RoundLogic>().buttonclicked();
+        GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().newround();
     }
 
-    void ModifierG()
+    /*void ModifierG()
     {
         Debug.Log("Modifier G selected");
-    }
+
+        GameObject.Find("RoundSystem").GetComponent<RoundLogic>().buttonclicked();
+        GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().newround();
+    }*/
+
+    
 }
