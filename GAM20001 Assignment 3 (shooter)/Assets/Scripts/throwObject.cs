@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class throwObject : MonoBehaviour
 {
@@ -13,28 +14,32 @@ public class throwObject : MonoBehaviour
     public float throwForce;
     public float throwUpwardForce;
 
-    private bool throwready;
+    private bool throwactive;
     private float fireratemod;
     private float timesincelastthrow;
+
+    private bool roundactive;
 
     
     private void Update()
     {
         fireratemod = GameObject.Find("ModSystem").GetComponent<ModSystem>().fireratemod;
+        roundactive = GameObject.Find("RoundSystem").GetComponent<RoundLogic>().roundactive;
 
 
         timesincelastthrow += Time.deltaTime;
         //0.5 will become its own variable 
-        if (timesincelastthrow > 0.5f * fireratemod)
+        if (timesincelastthrow > 0.5f * fireratemod && roundactive == true)
         {
-            throwready = true;
-        }
-        else
-        {
-            throwready = false;
+            throwactive = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0) && throwready == true)
+        else if (timesincelastthrow < 0.5f * fireratemod || roundactive == false)
+        {
+            throwactive = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Mouse0) && throwactive == true)
         {
             Throw();
             timesincelastthrow = 0;
