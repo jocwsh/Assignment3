@@ -27,7 +27,7 @@ public class RoundLogic : MonoBehaviour
         roundcountdown = roundtime;
 
         //threshold is currently an array but can be a formula later
-        thresholdcuttoff = new float [6] {500, 800, 1200, 1800, 2500, 3500};
+        thresholdcuttoff = new float [] {500, 800, 1200, 1800, 2500, 3500, 5000, 7000};
         thresholdscore = thresholdcuttoff[0];
     }
 

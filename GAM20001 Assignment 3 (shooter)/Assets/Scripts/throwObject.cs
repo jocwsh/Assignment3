@@ -13,17 +13,31 @@ public class throwObject : MonoBehaviour
     public float throwForce;
     public float throwUpwardForce;
 
-    private void Start()
-    {
+    private bool throwready;
+    private float fireratemod;
+    private float timesincelastthrow;
 
-    }
-
+    
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        fireratemod = GameObject.Find("ModSystem").GetComponent<ModSystem>().fireratemod;
+
+
+        timesincelastthrow += Time.deltaTime;
+        //0.5 will become its own variable 
+        if (timesincelastthrow > 0.5f * fireratemod)
+        {
+            throwready = true;
+        }
+        else
+        {
+            throwready = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Mouse0) && throwready == true)
         {
             Throw();
-            Debug.Log("throwing ball");
+            timesincelastthrow = 0;
         }
     }
 

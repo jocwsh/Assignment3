@@ -34,13 +34,14 @@ public class ButtonRandomiser : MonoBehaviour
         // Create list of function references
         availableModifiers = new List<Modifier>
         {
-            new Modifier("A", Color.red, ModifierA),
-            new Modifier("B", Color.green, ModifierB),
-            new Modifier("C", Color.red, ModifierC),
-            new Modifier("D", Color.green, ModifierD),
-            new Modifier("E", Color.red, ModifierE),
-            new Modifier("F", Color.green, ModifierF),
-            //new Modifier("G", Color.red, ModifierG),
+            new Modifier("+ Speed", Color.red, ModifierA),
+            new Modifier("- Speed", Color.green, ModifierB),
+            new Modifier("- Size", Color.red, ModifierC),
+            new Modifier("+ Size", Color.green, ModifierD),
+            new Modifier("- Targets", Color.red, ModifierE),
+            new Modifier("+ Targets", Color.green, ModifierF),
+            new Modifier("- Firerate", Color.red, ModifierG),
+            new Modifier("+ Firerate", Color.green, ModifierH),
         };
 
         AssignButtons();
@@ -186,13 +187,25 @@ public class ButtonRandomiser : MonoBehaviour
         GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().newround();
     }
 
-    /*void ModifierG()
+    void ModifierG()
     {
         Debug.Log("Modifier G selected");
 
+        modscript.fireratehard();
+
         GameObject.Find("RoundSystem").GetComponent<RoundLogic>().buttonclicked();
         GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().newround();
-    }*/
+    }
+
+    void ModifierH()
+    {
+        Debug.Log("Modifier H selected");
+
+        modscript.firerateeasy();
+
+        GameObject.Find("RoundSystem").GetComponent<RoundLogic>().buttonclicked();
+        GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().newround();
+    }
 
     
 }

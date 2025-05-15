@@ -24,11 +24,14 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoretext.text = score.ToString();
+        scoretext.text = ((int)score).ToString();
     }
 
     public void newround()
     {
+
+        scoremult = GameObject.Find ("ModSystem").GetComponent<ModSystem>().calcualtescoremult();
+
         score = 0;
 
         //connect to modsystem script here

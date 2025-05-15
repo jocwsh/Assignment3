@@ -1393,13 +1393,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e97217e000940408d3776710a7fb47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoremult: 0
+  scoremult: 1
+  speedscoremult: 0
+  sizescoremult: 0
+  targetspawnfrequencyscoremult: 0
+  fireratescoremult: 0
   speedmult: 1
   speedcounter: 0
   sizemult: 1
   sizecounter: 0
   spawntimemod: 1
   spawntimecounter: 0
+  fireratemod: 1
+  fireratecounter: 0
   ballsizemod: 1
   ballsizecounter: 0
 --- !u!4 &2081653640
