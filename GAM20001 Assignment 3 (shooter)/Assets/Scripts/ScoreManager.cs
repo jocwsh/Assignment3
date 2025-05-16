@@ -30,7 +30,7 @@ public class ScoreManager : MonoBehaviour
     public void newround()
     {
 
-        scoremult = GameObject.Find ("ModSystem").GetComponent<ModSystem>().calcualtescoremult();
+        scoremult = GameObject.Find ("ModSystem").GetComponent<ModSystem>().calculatescoremult();
 
         score = 0;
 
