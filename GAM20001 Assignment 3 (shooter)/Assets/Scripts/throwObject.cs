@@ -48,22 +48,38 @@ public class throwObject : MonoBehaviour
 
     public void Throw()
     {
-        GameObject projectile = Instantiate(throwingObject, throwPoint.position, camera.rotation);
+        GameObject projectile = Instantiate(throwingObject, throwPoint.position, Quaternion.identity);
 
         Rigidbody projectileRB = projectile.GetComponent<Rigidbody>();
 
-        Vector3 forceDirection = camera.transform.forward;
+        projectileRB.useGravity = false;
+
+        projectileRB.linearDamping = 0f;
+
+
+        Vector3 targetPoint;
 
         RaycastHit hit;
 
         if (Physics.Raycast(camera.position, camera.forward, out hit, 500f))
         {
-            forceDirection = (hit.point - throwPoint.position).normalized;
+            targetPoint = hit.point;
+        }
+        else
+        {
+            targetPoint = camera.position + camera.forward * 500f;
         }
 
-        Vector3 forceToAdd = forceDirection * throwForce + transform.up * throwUpwardForce;
+        Vector3 direction = (targetPoint - throwPoint.position).normalized;
+        float distance = Vector3.Distance(throwPoint.position, targetPoint);
 
-        projectileRB.AddForce(forceToAdd, ForceMode.Impulse);
+        float timeToReachTarget = 0.2f;
+
+        float speed = distance / timeToReachTarget;
+
+        projectileRB.linearVelocity = direction * speed;
+
+        Destroy(projectile, 10f);
 
     }
 }
