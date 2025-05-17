@@ -28,7 +28,7 @@ public class throwObject : MonoBehaviour
 
 
         timesincelastthrow += Time.deltaTime;
-        //0.5 will become its own variable 
+        
         if (timesincelastthrow > 0.5f * fireratemod && roundactive == true)
         {
             throwactive = true;
@@ -48,49 +48,32 @@ public class throwObject : MonoBehaviour
 
     public void Throw()
     {
-        GameObject projectile = Instantiate(throwingObject, throwPoint.position, throwPoint.rotation);
-
-        /*Rigidbody projectileRB = projectile.GetComponent<Rigidbody>();
+        GameObject projectile = Instantiate(throwingObject, throwPoint.position, Quaternion.identity);
+        Rigidbody projectileRB = projectile.GetComponent<Rigidbody>();
 
         projectileRB.useGravity = false;
-
         projectileRB.linearDamping = 0f;
 
-        Vector3 forceDirection = camera.transform.forward;
-
-
+        Ray ray = new Ray(camera.position, camera.forward);
+        RaycastHit hit;
         Vector3 targetPoint;
 
-        RaycastHit hit;
-
-        if (Physics.Raycast(camera.position, camera.forward, out hit, 500f))
+        if (Physics.Raycast(ray, out hit, 500f))
         {
             targetPoint = hit.point;
-
-            //forceDirection = (hit.point - throwPoint.position).normalized;
         }
         else
         {
-            targetPoint = camera.position + camera.forward * 500f;
+            targetPoint = ray.GetPoint(50f);  
         }
 
-        //Vector3 forceToAdd = forceDirection * throwForce + transform.up * throwUpwardForce;
-
-        Vector3 forceToAdd = forceDirection * throwForce + transform.up * throwUpwardForce;
-
         Vector3 direction = (targetPoint - throwPoint.position).normalized;
-        float distance = Vector3.Distance(throwPoint.position, targetPoint);
 
-        float timeToReachTarget = 0.5f;
+        float speed = 100f;
+        projectileRB.linearVelocity = direction * speed;
 
-        float speed = distance / timeToReachTarget;
-        
+        Destroy(projectile, 5f);
 
-        //projectileRB.linearVelocity = direction * speed;
-
-        projectileRB.AddForce(forceToAdd, ForceMode.Impulse);*/
-
-        Destroy(projectile, 10f);
-
+        Debug.DrawLine(throwPoint.position, targetPoint, Color.red, 2f);
     }
 }
