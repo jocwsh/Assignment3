@@ -153,7 +153,7 @@ public class ModSystem : MonoBehaviour
     public void fireratehard() //slower firerate but more score
     {
         fireratecounter += 1;
-        fireratemod = 1 + 0.2f * -fireratecounter;
+        fireratemod = 1 + 0.2f * fireratecounter;
 
         changingscoremult = fireratescoremult;
         changingcounter = fireratecounter;
@@ -166,7 +166,7 @@ public class ModSystem : MonoBehaviour
     public void firerateeasy()
     {
         fireratecounter -= 1;
-        fireratemod = 1 + 0.2f * -fireratecounter;
+        fireratemod = 1 + 0.2f * fireratecounter;
 
         changingscoremult = fireratescoremult;
         changingcounter = fireratecounter;

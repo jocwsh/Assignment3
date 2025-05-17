@@ -8,6 +8,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject settingsMenuUI;
 
+    private bool roundactive;
+
     void Start()
     {
         pauseMenuUI.SetActive(false);
@@ -19,6 +21,7 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
+        roundactive = GameObject.Find("RoundSystem").GetComponent<RoundLogic>().roundactive;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameIsPaused)
@@ -29,6 +32,12 @@ public class PauseMenu : MonoBehaviour
             {
                 Pause();
             }
+        }
+
+        if (roundactive == false)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 
