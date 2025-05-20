@@ -7,7 +7,7 @@ public class TargetSpawn : MonoBehaviour
     private float countdown = 0;
     private bool spawnactive;
 
-    private float spawntime = 1.5f;
+    private float spawntime = 2.5f;
     private float spawntimemod;
     private float randomiser = 0.2f;
     
