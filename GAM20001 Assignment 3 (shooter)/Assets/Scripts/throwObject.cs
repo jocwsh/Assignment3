@@ -48,10 +48,10 @@ public class throwObject : MonoBehaviour
 
     public void Throw()
     {
-        GameObject projectile = Instantiate(throwingObject, throwPoint.position, throwPoint.rotation);
+        //GameObject projectile = Instantiate(throwingObject, throwPoint.position, throwPoint.rotation);
 
 
-        /*GameObject projectile = Instantiate(throwingObject, throwPoint.position, Quaternion.identity);
+        GameObject projectile = Instantiate(throwingObject, throwPoint.position, Quaternion.identity);
 
         Rigidbody projectileRB = projectile.GetComponent<Rigidbody>();
 
@@ -80,7 +80,7 @@ public class throwObject : MonoBehaviour
 
         float speed = distance / timeToReachTarget;
 
-        projectileRB.linearVelocity = direction * speed;*/
+        projectileRB.linearVelocity = direction * speed;
 
         Destroy(projectile, 10f);
 

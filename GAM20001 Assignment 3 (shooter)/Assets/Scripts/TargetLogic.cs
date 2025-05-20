@@ -137,7 +137,7 @@ public class TargetLogic : MonoBehaviour
         */
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
         //link to score here
         //maybe also add text to show how many points a target actually is

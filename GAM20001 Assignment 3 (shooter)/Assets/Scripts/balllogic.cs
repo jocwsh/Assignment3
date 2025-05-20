@@ -16,7 +16,7 @@ public class balllogic : MonoBehaviour
 
 
         rb = GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * 30, ForceMode.Impulse);
+        //rb.AddForce(transform.forward * 30, ForceMode.Impulse);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
