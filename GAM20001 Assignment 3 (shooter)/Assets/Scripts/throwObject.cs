@@ -76,7 +76,7 @@ public class throwObject : MonoBehaviour
         Vector3 direction = (targetPoint - throwPoint.position).normalized;
         float distance = Vector3.Distance(throwPoint.position, targetPoint);
 
-        float timeToReachTarget = 0.5f;
+        float timeToReachTarget = 0.75f;
 
         float speed = distance / timeToReachTarget;
 

@@ -124,13 +124,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69539a90609e00d499aaa522fcb867e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2.5
+  speed: 4
   maxymovamp: 1.5
   minymovamp: 0.15
   ymovfrequency: 4
-  EasyScale: 1.2
-  MediumScale: 1
-  HardScale: 0.8
+  EasyScale: 2
+  MediumScale: 1.8
+  HardScale: 1.6
   EasyTarget: 0
   MediumTarget: 0
   HardTarget: 0
