@@ -53,9 +53,6 @@ public class RoundLogic : MonoBehaviour
         roundactive= true;
         thresholdscore = thresholdcuttoff[roundnumber];
 
-
-  
-
     }
 
 
@@ -78,6 +75,7 @@ public class RoundLogic : MonoBehaviour
             {
                 //win sequence
                 roundactive = false;
+                GameObject.Find("RandomiseCanvas").GetComponent<ButtonRandomiser>().AssignButtons();
                 
 
                 Debug.Log (thresholdscore);
