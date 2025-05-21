@@ -40,6 +40,8 @@ public class TargetLogic : MonoBehaviour
 
     private Renderer colour;
 
+    private bool hit = false;
+
 
 
     void Start()
@@ -105,24 +107,37 @@ public class TargetLogic : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
     }
 
     void FixedUpdate()
     {
         elapsedtime += Time.deltaTime;
 
-        //add some randomness here (too stiff)
-        ymov = maxymovamp * Mathf.Sin(ymovfrequency * (elapsedtime + phaseshift));
 
+        //add some randomness here (too stiff)
+
+        if (hit == false)
+        {
+            ymov = maxymovamp * Mathf.Sin(ymovfrequency * (elapsedtime + phaseshift));
+
+
+        }
+        else
+        {
+            ymov = -10;
+        }
+        
         if (rightspawn == false)
         {
-            rb.linearVelocity = new Vector3 (randomisedspeed, ymov, 0);
+            rb.linearVelocity = new Vector3(randomisedspeed, ymov, 0);
         }
 
         if (rightspawn == true)
         {
-            rb.linearVelocity = new Vector3 (-randomisedspeed, ymov, 0);
-        }  
+            rb.linearVelocity = new Vector3(-randomisedspeed, ymov, 0);
+        }
+        
 
         //if want to change wave after 1 period then do something like
         /*if (elapsedtime > waveperiod)
@@ -155,6 +170,7 @@ public class TargetLogic : MonoBehaviour
         }
         
         StartCoroutine(despawn());
+        hit = true;
         colour.material.color = new Color(255, 0, 0);
 
         //play destroy animation here (maybe put destroy in coroutine)

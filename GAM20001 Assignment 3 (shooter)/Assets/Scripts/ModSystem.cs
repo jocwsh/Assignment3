@@ -41,7 +41,7 @@ public class ModSystem : MonoBehaviour
 
         else if (changingcounter <= 0)
         {
-            changingscoremult = -0.1f * Mathf.Abs(changingcounter);
+            changingscoremult = -0.05f * Mathf.Abs(changingcounter);
         }
 
         return changingscoremult;
@@ -50,6 +50,8 @@ public class ModSystem : MonoBehaviour
     public float calculatescoremult()
     {
         scoremult = 1 + speedscoremult + sizescoremult + spawnfrequencyscoremult + fireratescoremult;
+
+        GameObject.Find("MultiplierHUD").GetComponent<multhud>().NewRound();
 
         return scoremult;
     }
