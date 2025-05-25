@@ -124,7 +124,7 @@ public class ModSystem : MonoBehaviour
     public void targetspawnfrequencyhard() //less frequent spawns but more score
     {
         spawntimecounter += 1;
-        spawntimemod = 1 + 0.1f * -spawntimecounter;
+        spawntimemod = 1 + 0.1f * spawntimecounter;
 
         changingscoremult = spawnfrequencyscoremult;
         changingcounter = spawntimecounter;
@@ -137,7 +137,7 @@ public class ModSystem : MonoBehaviour
     public void targetspawnfrequencyeasy()
     {
         spawntimecounter -= 1;
-        spawntimemod = 1 + 0.1f * -spawntimecounter;
+        spawntimemod = 1 + 0.1f * spawntimecounter;
 
         changingscoremult = spawnfrequencyscoremult;
         changingcounter = spawntimecounter;
