@@ -24,7 +24,7 @@ public class ModSystem : MonoBehaviour
     void Start()
     {
         //have table on screen
-        // For each token = -10%
+        // For each token = -5%
         // 1 ticket = +20%
         // 2 ticktes = +40%
         // 3 tickets = +70%

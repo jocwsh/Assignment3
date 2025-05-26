@@ -156,15 +156,15 @@ public class TargetLogic : MonoBehaviour
     {
         //link to score here
         //maybe also add text to show how many points a target actually is
-        if (EasyTarget == true)
+        if (EasyTarget == true && hit == false)
         {
             GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().easyhit();
         }
-        if (MediumTarget == true)
+        if (MediumTarget == true && hit == false)
         {
             GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().mediumhit();
         }
-        if (HardTarget == true)
+        if (HardTarget == true && hit == false)
         {
             GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().hardhit();
         }
