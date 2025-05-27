@@ -56,7 +56,7 @@ public class TargetLogic : MonoBehaviour
         
         speed = speed * speedmult;
 
-        randomisedspeed = Random.Range (speed * 0.9f , speed * 1.1f);
+        //randomisedspeed = Random.Range (speed * 0.9f , speed * 1.1f);
 
 
         if (transform.position.x > 0)
@@ -130,12 +130,12 @@ public class TargetLogic : MonoBehaviour
         
         if (rightspawn == false)
         {
-            rb.linearVelocity = new Vector3(randomisedspeed, ymov, 0);
+            rb.linearVelocity = new Vector3(speed, ymov, 0);
         }
 
         if (rightspawn == true)
         {
-            rb.linearVelocity = new Vector3(-randomisedspeed, ymov, 0);
+            rb.linearVelocity = new Vector3(-speed, ymov, 0);
         }
         
 

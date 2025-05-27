@@ -28,7 +28,7 @@ public class RoundLogic : MonoBehaviour
 
         //threshold is currently an array but can be a formula later
         //i think the first one can be cut out if too easy
-        thresholdcuttoff = new float [] {600, 700, 850, 1050, 1300, 1600, 2000, 2500, 3000, 3600, 4300, 5000};
+        thresholdcuttoff = new float [] {400,500, 700, 900, 1200, 1500, 1900, 2400, 3000, 3700, 4500, 5700};
         thresholdscore = thresholdcuttoff[0];
     }
 
