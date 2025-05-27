@@ -127,6 +127,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 329626242574175115, guid: db784720e99ad82439f8a06fd6f50e61, type: 3}
+      propertyPath: m_margin.w
+      value: -130.45221
+      objectReference: {fileID: 0}
+    - target: {fileID: 329626242574175115, guid: db784720e99ad82439f8a06fd6f50e61, type: 3}
+      propertyPath: m_margin.x
+      value: -48.754944
+      objectReference: {fileID: 0}
+    - target: {fileID: 329626242574175115, guid: db784720e99ad82439f8a06fd6f50e61, type: 3}
+      propertyPath: m_margin.z
+      value: -43.484093
+      objectReference: {fileID: 0}
+    - target: {fileID: 329626242574175115, guid: db784720e99ad82439f8a06fd6f50e61, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 1731414153615929396, guid: db784720e99ad82439f8a06fd6f50e61, type: 3}
       propertyPath: m_Name
       value: RandomiseCanvas
@@ -223,6 +239,14 @@ PrefabInstance:
       propertyPath: button3
       value: 
       objectReference: {fileID: 1860690380}
+    - target: {fileID: 6189924669940635053, guid: db784720e99ad82439f8a06fd6f50e61, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -42
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189924669940635053, guid: db784720e99ad82439f8a06fd6f50e61, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -49
+      objectReference: {fileID: 0}
     - target: {fileID: 6870050322593061607, guid: db784720e99ad82439f8a06fd6f50e61, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -266,6 +290,22 @@ PrefabInstance:
     - target: {fileID: 6870050322593061607, guid: db784720e99ad82439f8a06fd6f50e61, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -149.72998
+      objectReference: {fileID: 0}
+    - target: {fileID: 7130093159617590136, guid: db784720e99ad82439f8a06fd6f50e61, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -43
+      objectReference: {fileID: 0}
+    - target: {fileID: 7233826534539741108, guid: db784720e99ad82439f8a06fd6f50e61, type: 3}
+      propertyPath: m_margin.w
+      value: -113.32216
+      objectReference: {fileID: 0}
+    - target: {fileID: 7233826534539741108, guid: db784720e99ad82439f8a06fd6f50e61, type: 3}
+      propertyPath: m_margin.z
+      value: -100.14522
+      objectReference: {fileID: 0}
+    - target: {fileID: 7233826534539741108, guid: db784720e99ad82439f8a06fd6f50e61, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 7257937631492959054, guid: db784720e99ad82439f8a06fd6f50e61, type: 3}
       propertyPath: m_Enabled
@@ -1399,12 +1439,16 @@ MonoBehaviour:
 
     For each ticket stack:
 
-    1 ticket = +20%
+    1 ticket = +15%
 
     2
     ticktes = +40%
 
-    3 tickets = +70%'
+    3 tickets = +70%
+
+
+    This could probs go away now we have
+    the text under tickets'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1879,7 +1923,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3456933401417741505, guid: 9748d3f4f616bc34abacbd887ddfa63b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -3.4316
+      value: -3.4315796
       objectReference: {fileID: 0}
     - target: {fileID: 5025621329164206370, guid: 9748d3f4f616bc34abacbd887ddfa63b, type: 3}
       propertyPath: m_Pivot.x
@@ -3084,6 +3128,7 @@ MonoBehaviour:
   sizescoremult: 0
   spawnfrequencyscoremult: 0
   fireratescoremult: 0
+  positivemult: []
   speedmult: 1
   speedcounter: 0
   sizemult: 1

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections;
 using TMPro;
+using System.Net.Http.Headers;
 
 public class ButtonRandomiser : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class ButtonRandomiser : MonoBehaviour
     private bool activeround;
 
     private ModSystem modscript;
+    private float multchange;
     
 
     private void Start()
@@ -29,37 +31,84 @@ public class ButtonRandomiser : MonoBehaviour
         butt2trans = button2.GetComponent<RectTransform>();
         butt3trans = button3.GetComponent<RectTransform>();
 
-        modscript = GameObject.Find ("ModSystem").GetComponent<ModSystem>();
+        modscript = GameObject.Find("ModSystem").GetComponent<ModSystem>();
 
         // Create list of function references
-        availableModifiers = new List<Modifier>
+        /*availableModifiers = new List<Modifier>
         {
-            new Modifier("+ Speed", Color.red, ModifierA),
-            new Modifier("- Speed", Color.green, ModifierB),
-            new Modifier("- Size", Color.red, ModifierC),
-            new Modifier("+ Size", Color.green, ModifierD),
-            new Modifier("- Targets", Color.red, ModifierE),
-            new Modifier("+ Targets", Color.green, ModifierF),
-            new Modifier("- Firerate", Color.red, ModifierG),
-            new Modifier("+ Firerate", Color.green, ModifierH),
-        };
+            new Modifier("Increases Target Speed by 10%. \n Will increase Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().speedcounter, 1) + "%", Color.red, ModifierA),
+            new Modifier("Decreases Target Speed by 10%. \n Will decrease Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().speedcounter, -1) + "%", Color.green, ModifierB),
+            new Modifier("Decreases Target Size by 10%. \n Will increase Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().sizecounter, 1) + "%", Color.red, ModifierC),
+            new Modifier("Increases Target Size by 10%. \n Will decrease Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().sizecounter, -1) + "%", Color.green, ModifierD),
+            new Modifier("Decreases Target Spawn Rate by 10%. \n Will increase Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().spawntimecounter, 1) + "%", Color.red, ModifierE),
+            new Modifier("Increases Target Spawn Rate by 10%. \n Will decrease Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().spawntimecounter, -1) + "%", Color.green, ModifierF),
+            new Modifier("Decreases Gun Firerate by 10%. \n Will increase Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().fireratecounter, 1) + "%", Color.red, ModifierG),
+            new Modifier("Increases Gun Firerate by 10%. \n Will decrease Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().fireratecounter, -1) + "%", Color.green, ModifierH),
+        };*/
 
-        AssignButtons();
+        //AssignButtons();
 
+    }
+
+    float predictscoremult(int counter, int counterchange)
+    {
+        float[] posmults = new float[] {0.15f, 0.4f, 0.7f, 1f, 1.4f, 2f};
+        Debug.Log(posmults);
+
+
+        if (counter <= 0 && counterchange == -1)
+        {
+            multchange = -5;
+        }
+
+        else if (counter < 0 && counterchange == +1)
+        {
+            multchange = 5;
+        }
+
+        else if (counter >= 0 && counterchange == 1)
+        {
+            if (counter == 0)
+            {
+                multchange = 15f;
+            }
+            else
+            {
+                multchange = posmults[counter] - posmults[counter-1];
+                multchange = multchange * 100; 
+            }
+            
+        }
+
+        else if (counter > 0 && counterchange == -1)
+        {
+            if (counter == 1)
+            {
+                multchange = -15f;
+            }
+            else
+            {
+                multchange = posmults[counter - 2] - posmults[counter-1];
+                multchange = multchange * 100;
+            }
+            
+        }
+
+        return multchange;
     }
 
     private void Update()
     {
-        activeround= GameObject.Find("RoundSystem").GetComponent<RoundLogic>().roundactive;
+        activeround = GameObject.Find("RoundSystem").GetComponent<RoundLogic>().roundactive;
 
         if (activeround == false)
         {
-            butt1trans.transform.localPosition = new Vector2(-200, 0);
-            butt2trans.transform.localPosition = new Vector2(200, 0);
+            butt1trans.transform.localPosition = new Vector2(-300, 0);
+            butt2trans.transform.localPosition = new Vector2(300, 0);
             butt3trans.transform.localPosition = new Vector2(0, -110);
 
             button1.interactable = true;
-            button2.interactable = true;   
+            button2.interactable = true;
             button3.interactable = true;
         }
         else if (activeround == true)
@@ -71,7 +120,7 @@ public class ButtonRandomiser : MonoBehaviour
             button1.interactable = false;
             button2.interactable = false;
             button3.interactable = false;
-        }   
+        }
     }
 
     [System.Serializable]
@@ -80,13 +129,14 @@ public class ButtonRandomiser : MonoBehaviour
         public string label;
         public Color color;
         public Action action;
+        //string for description probs here (in description describe what it does and what the mult will be if selected)
 
         public Modifier(string label, Color color, Action action)
         {
             this.label = label;
             this.color = color;
             this.action = action;
-    }
+        }
     }
 
     public void AssignButtons()
@@ -97,7 +147,19 @@ public class ButtonRandomiser : MonoBehaviour
     void AssignModifier()
     {
         // Clone the list
-        List<Modifier> shuffledModifiers = new List<Modifier>(availableModifiers);
+        //List<Modifier> shuffledModifiers = new List<Modifier>(availableModifiers);
+
+        List<Modifier> shuffledModifiers = new List<Modifier>
+        {
+            new Modifier("Increases Target Speed by 10%. \n Will increase Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().speedcounter, 1) + "%", Color.red, ModifierA),
+            new Modifier("Decreases Target Speed by 10%. \n Will decrease Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().speedcounter, -1) + "%", Color.green, ModifierB),
+            new Modifier("Decreases Target Size by 10%. \n Will increase Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().sizecounter, 1) + "%", Color.red, ModifierC),
+            new Modifier("Increases Target Size by 10%. \n Will decrease Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().sizecounter, -1) + "%", Color.green, ModifierD),
+            new Modifier("Decreases Target Spawn Rate by 10%. \n Will increase Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().spawntimecounter, 1) + "%", Color.red, ModifierE),
+            new Modifier("Increases Target Spawn Rate by 10%. \n Will decrease Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().spawntimecounter, -1) + "%", Color.green, ModifierF),
+            new Modifier("Decreases Gun Firerate by 10%. \n Will increase Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().fireratecounter, 1) + "%", Color.red, ModifierG),
+            new Modifier("Increases Gun Firerate by 10%. \n Will decrease Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().fireratecounter, -1) + "%", Color.green, ModifierH),
+        };
 
         // Shuffle the list and assign first two
         for (int i = 0; i < shuffledModifiers.Count; i++)

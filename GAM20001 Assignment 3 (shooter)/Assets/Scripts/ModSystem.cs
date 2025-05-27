@@ -13,7 +13,7 @@ public class ModSystem : MonoBehaviour
     private float changingscoremult;
     private int changingcounter;
 
-    private float[] positivemult;
+    public float[] positivemult;
 
 
 
@@ -29,7 +29,10 @@ public class ModSystem : MonoBehaviour
         // 2 ticktes = +40%
         // 3 tickets = +70%
         //and so on
-        positivemult = new float[] { 0.2f, 0.4f, 0.7f, 1f, 1.4f, 2f};
+
+
+        //if this changes, we need to change the array in button randomiser too
+        positivemult = new float[] {0.15f, 0.4f, 0.7f, 1f, 1.4f, 2f};
     }
 
     public float changescoremult()
