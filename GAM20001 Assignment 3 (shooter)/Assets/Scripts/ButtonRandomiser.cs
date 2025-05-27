@@ -54,8 +54,8 @@ public class ButtonRandomiser : MonoBehaviour
 
         if (activeround == false)
         {
-            butt1trans.transform.localPosition = new Vector2(-115, 0);
-            butt2trans.transform.localPosition = new Vector2(115, 0);
+            butt1trans.transform.localPosition = new Vector2(-200, 0);
+            butt2trans.transform.localPosition = new Vector2(200, 0);
             butt3trans.transform.localPosition = new Vector2(0, -110);
 
             button1.interactable = true;
