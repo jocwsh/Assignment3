@@ -20,7 +20,14 @@ public class throwObject : MonoBehaviour
 
     private bool roundactive;
 
-    
+    public AudioSource audioSource;
+    public AudioClip ThrowSound;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     private void Update()
     {
         fireratemod = GameObject.Find("ModSystem").GetComponent<ModSystem>().fireratemod;
@@ -42,6 +49,7 @@ public class throwObject : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0) && throwactive == true)
         {
             Throw();
+
             timesincelastthrow = 0;
         }
     }
@@ -81,6 +89,9 @@ public class throwObject : MonoBehaviour
         float speed = distance / timeToReachTarget;
 
         projectileRB.linearVelocity = direction * speed;
+
+        audioSource.clip = ThrowSound;
+        audioSource.Play();
 
         Destroy(projectile, 10f);
 
