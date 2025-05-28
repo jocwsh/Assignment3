@@ -153,14 +153,14 @@ public class ButtonRandomiser : MonoBehaviour
 
         List<Modifier> shuffledModifiers = new List<Modifier>
         {
-            new Modifier("Increases Target Speed by 10%. \n Will increase Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().speedcounter, 1) + "%", ticket, ModifierA),
-            new Modifier("Decreases Target Speed by 10%. \n Will decrease Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().speedcounter, -1) + "%", token, ModifierB),
-            new Modifier("Decreases Target Size by 10%. \n Will increase Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().sizecounter, 1) + "%", ticket, ModifierC),
-            new Modifier("Increases Target Size by 10%. \n Will decrease Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().sizecounter, -1) + "%", token, ModifierD),
-            new Modifier("Decreases Gun Firerate by 10%. \n Will increase Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().fireratecounter, 1) + "%", ticket, ModifierE),
-            new Modifier("Increases Gun Firerate by 10%. \n Will decrease Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().fireratecounter, -1) + "%", token, ModifierF),
-            //new Modifier("Decreases Target Spawn Rate by 10%. \n Will increase Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().spawntimecounter, 1) + "%", ticket, ModifierG),
-            //new Modifier("Increases Target Spawn Rate by 10%. \n Will decrease Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().spawntimecounter, -1) + "%", token, ModifierH),
+            new Modifier("Increases Target Speed by 10%. \n Increase Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().speedcounter, 1) + "%", ticket, ModifierA),
+            new Modifier("Decreases Target Speed by 10%. \n Decrease Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().speedcounter, -1) + "%", token, ModifierB),
+            new Modifier("Decreases Target Size by 10%. \n Increase Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().sizecounter, 1) + "%", ticket, ModifierC),
+            new Modifier("Increases Target Size by 10%. \n Decrease Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().sizecounter, -1) + "%", token, ModifierD),
+            new Modifier("Decreases Gun Firerate by 10%. \n Increase Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().fireratecounter, 1) + "%", ticket, ModifierE),
+            new Modifier("Increases Gun Firerate by 10%. \n Decrease Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().fireratecounter, -1) + "%", token, ModifierF),
+            new Modifier("Decreases Target Spawn Rate by 10%. \n Increase Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().spawntimecounter, 1) + "%", ticket, ModifierG),
+            new Modifier("Increases Target Spawn Rate by 10%. \n Decrease Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().spawntimecounter, -1) + "%", token, ModifierH),
         };
 
         // Shuffle the list and assign first two
@@ -233,7 +233,7 @@ public class ButtonRandomiser : MonoBehaviour
 
     void ModifierE()
     {
-        Debug.Log("Modifier G selected");
+        Debug.Log("Modifier E selected");
 
         modscript.fireratehard();
 
@@ -243,7 +243,7 @@ public class ButtonRandomiser : MonoBehaviour
 
     void ModifierF()
     {
-        Debug.Log("Modifier H selected");
+        Debug.Log("Modifier F selected");
 
         modscript.firerateeasy();
 
@@ -252,9 +252,9 @@ public class ButtonRandomiser : MonoBehaviour
     }
 
 
-    /*void ModifierG()
+    void ModifierG()
     {
-        Debug.Log("Modifier E selected");
+        Debug.Log("Modifier G selected");
 
         modscript.targetspawnfrequencyhard();
 
@@ -264,13 +264,13 @@ public class ButtonRandomiser : MonoBehaviour
 
     void ModifierH()
     {
-        Debug.Log("Modifier F selected");
+        Debug.Log("Modifier H selected");
 
         modscript.targetspawnfrequencyeasy();
 
         GameObject.Find("RoundSystem").GetComponent<RoundLogic>().buttonclicked();
         GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().newround();
-    }*/
+    }
 
     
     

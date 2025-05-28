@@ -23,8 +23,9 @@ public class ModSystem : MonoBehaviour
     public float speedmult;
     public int speedcounter;
 
-    public GameObject stack1, stack2, stack3;
+    public GameObject stack1, stack2, stack3, stack4;
     public GameObject speedticket, speedtoken, text;
+    private Vector3 spawnpos;
 
     void Start()
     {
@@ -86,20 +87,22 @@ public class ModSystem : MonoBehaviour
             {
                 for (int i = 0; i < Mathf.Abs(counter); i++)
                 {
-                    Vector3 spawnpos = stack.transform.position - new Vector3(0, 30 * i, 0);
+                    spawnpos = stack.transform.position - new Vector3(0, 30 * i, 0);
                     Instantiate(ticket, spawnpos, Quaternion.identity, stack.transform);
                 }
             }
 
             else if (counter < 0)
-            for (int i = 0; i < Mathf.Abs(counter); i++)
             {
-                Vector3 spawnpos = stack.transform.position - new Vector3(0, 30 * i, 0);
-                Instantiate(token, spawnpos, Quaternion.identity, stack.transform);
+                for (int i = 0; i < Mathf.Abs(counter); i++)
+                {
+                    spawnpos = stack.transform.position - new Vector3(0, 30 * i, 0);
+                    Instantiate(token, spawnpos, Quaternion.identity, stack.transform);
+                }
             }
             
             // can change position of text using above value if overlapping
-            Instantiate(text, stack.transform);
+            Instantiate(text, spawnpos - new Vector3(0, 125, 0), Quaternion.identity, stack.transform);
             TextMeshProUGUI[] stacktext = stack.GetComponentsInChildren<TextMeshProUGUI>();
 
             //this is like this cuz destroying shit is stupid
@@ -199,7 +202,7 @@ public class ModSystem : MonoBehaviour
     }
 
 
-    /*public float spawntimemod;
+    public float spawntimemod;
     public int spawntimecounter;
 
     public void targetspawnfrequencyhard() //less frequent spawns but more score
@@ -210,6 +213,7 @@ public class ModSystem : MonoBehaviour
         spawnfrequencyscoremult = changescoremult(spawnfrequencyscoremult, spawntimecounter);
 
         calculatescoremult();
+        changestack(stack4, spawntimecounter, "Bonus Multiplier: ", spawnfrequencyscoremult, speedticket, speedtoken);
     }
 
     public void targetspawnfrequencyeasy()
@@ -220,7 +224,8 @@ public class ModSystem : MonoBehaviour
         spawnfrequencyscoremult = changescoremult(spawnfrequencyscoremult, spawntimecounter);
 
         calculatescoremult();
-    }*/
+        changestack(stack4, spawntimecounter, "Bonus Multiplier: ", spawnfrequencyscoremult, speedticket, speedtoken);
+    }
 
 
 

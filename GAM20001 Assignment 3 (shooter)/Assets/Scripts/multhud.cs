@@ -18,7 +18,7 @@ public class multhud : MonoBehaviour
     {
         hudtext.text = "";
         mult = GameObject.Find("ModSystem").GetComponent<ModSystem>().scoremult;
-        speedscoremult = GameObject.Find("ModSystem").GetComponent<ModSystem>().speedscoremult;
+        /*speedscoremult = GameObject.Find("ModSystem").GetComponent<ModSystem>().speedscoremult;
         sizescoremult = GameObject.Find("ModSystem").GetComponent<ModSystem>().sizescoremult;
         spawnfrequencyscoremult = GameObject.Find("ModSystem").GetComponent<ModSystem>().spawnfrequencyscoremult;
         fireratescoremult = GameObject.Find("ModSystem").GetComponent<ModSystem>().fireratescoremult;
@@ -38,7 +38,7 @@ public class multhud : MonoBehaviour
         if (fireratescoremult != 0)
         {
             hudtext.text += "Firerate Multiplier: +" + fireratescoremult +"x " ;
-        }
+        }*/
 
         hudtext.text += "Total Multiplier: " + mult + "x";
 
