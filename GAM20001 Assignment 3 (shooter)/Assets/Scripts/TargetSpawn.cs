@@ -22,6 +22,8 @@ public class TargetSpawn : MonoBehaviour
             {
                 Instantiate(Target, transform.position, transform.rotation);
                 randomspawn();
+
+                countdown = Random.Range (spawntime  * (1f - randomiser) , spawntime * (1f + randomiser));
             } 
         }
         if (GameObject.Find("RoundSystem").GetComponent<RoundLogic>().roundactive == false)
@@ -32,7 +34,7 @@ public class TargetSpawn : MonoBehaviour
 
     void randomspawn()
     {
-        spawntimemod= GameObject.Find ("ModSystem").GetComponent<ModSystem>().spawntimemod;
-        countdown = Random.Range (spawntime * spawntimemod * (1f - randomiser) , spawntime * spawntimemod * (1f + randomiser));
+        //spawntimemod= GameObject.Find ("ModSystem").GetComponent<ModSystem>().spawntimemod;
+        //countdown = Random.Range (spawntime * spawntimemod * (1f - randomiser) , spawntime * spawntimemod * (1f + randomiser));
     }
 }

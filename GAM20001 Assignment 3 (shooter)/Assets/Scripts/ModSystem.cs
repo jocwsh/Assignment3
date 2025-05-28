@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ModSystem : MonoBehaviour
 {
@@ -10,8 +12,8 @@ public class ModSystem : MonoBehaviour
     public float spawnfrequencyscoremult;
     public float fireratescoremult;
 
-    private float changingscoremult;
-    private int changingcounter;
+    //private float changingscoremult;
+    //private int changingcounter;
 
     public float[] positivemult;
 
@@ -20,6 +22,9 @@ public class ModSystem : MonoBehaviour
 
     public float speedmult;
     public int speedcounter;
+
+    public GameObject stack1, stack2, stack3;
+    public GameObject speedticket, speedtoken, text;
 
     void Start()
     {
@@ -35,7 +40,7 @@ public class ModSystem : MonoBehaviour
         positivemult = new float[] {0.15f, 0.4f, 0.7f, 1f, 1.4f, 2f};
     }
 
-    public float changescoremult()
+    public float changescoremult(float changingscoremult, int changingcounter)
     {
         if (changingcounter > 0)
         {
@@ -47,7 +52,63 @@ public class ModSystem : MonoBehaviour
             changingscoremult = -0.05f * Mathf.Abs(changingcounter);
         }
 
+
         return changingscoremult;
+    }
+
+
+    private void changestack(GameObject stack, int counter, string modname, float mult, GameObject ticket, GameObject token)//have to change which tokens/tickets will be created
+    {
+        if (counter == 0)
+        {
+            for (int a = stack.transform.childCount - 1; a >= 0; a--)
+            {
+                Destroy(stack.transform.GetChild(a).gameObject);
+            }
+
+            Instantiate(text, stack.transform);
+            TextMeshProUGUI[] stacktext = stack.GetComponentsInChildren<TextMeshProUGUI>();
+
+            //this is like this cuz destroying shit is stupid
+            stacktext[0].text = "";
+            stacktext[1].text = "";
+            
+        }
+
+        else
+        {
+            for (int a = stack.transform.childCount - 1; a >= 0; a--)
+            {
+                Destroy(stack.transform.GetChild(a).gameObject);
+            }
+
+            if (counter > 0)
+            {
+                for (int i = 0; i < Mathf.Abs(counter); i++)
+                {
+                    Vector3 spawnpos = stack.transform.position - new Vector3(0, 30 * i, 0);
+                    Instantiate(ticket, spawnpos, Quaternion.identity, stack.transform);
+                }
+            }
+
+            else if (counter < 0)
+            for (int i = 0; i < Mathf.Abs(counter); i++)
+            {
+                Vector3 spawnpos = stack.transform.position - new Vector3(0, 30 * i, 0);
+                Instantiate(token, spawnpos, Quaternion.identity, stack.transform);
+            }
+            
+            // can change position of text using above value if overlapping
+            Instantiate(text, stack.transform);
+            TextMeshProUGUI[] stacktext = stack.GetComponentsInChildren<TextMeshProUGUI>();
+
+            //this is like this cuz destroying shit is stupid
+            stacktext[0].text = modname + mult * 100 + "%";
+            stacktext[1].text = modname + mult * 100 + "%";
+
+        }
+        
+        
     }
 
     public float calculatescoremult()
@@ -65,12 +126,11 @@ public class ModSystem : MonoBehaviour
         speedcounter += 1;
         speedmult = 1 + 0.1f * speedcounter;
 
-        changingscoremult = speedscoremult;
-        changingcounter = speedcounter;
-
-        speedscoremult = changescoremult();
+        speedscoremult = changescoremult(speedscoremult, speedcounter);
 
         calculatescoremult();
+
+        changestack(stack1, speedcounter, "Bonus Multiplier: ", speedscoremult, speedticket, speedtoken);
 
     }
 
@@ -79,12 +139,10 @@ public class ModSystem : MonoBehaviour
         speedcounter -= 1;
         speedmult = 1 + 0.1f * speedcounter;
 
-        changingscoremult = speedscoremult;
-        changingcounter = speedcounter;
-
-        speedscoremult = changescoremult();
+        speedscoremult = changescoremult(speedscoremult, speedcounter);
 
         calculatescoremult();
+        changestack(stack1, speedcounter,  "Bonus Multiplier: ", speedscoremult, speedticket, speedtoken);
     }
 
 
@@ -98,12 +156,10 @@ public class ModSystem : MonoBehaviour
         sizecounter += 1;
         sizemult = 1 + 0.1f * -sizecounter;
 
-        changingscoremult = sizescoremult;
-        changingcounter = sizecounter;
-
-        sizescoremult = changescoremult();
+        sizescoremult = changescoremult(sizescoremult, sizecounter);
 
         calculatescoremult();
+        changestack(stack2, sizecounter, "Bonus Multiplier: ", sizescoremult, speedticket, speedtoken);
     }
 
     public void sizeeasy()
@@ -111,46 +167,11 @@ public class ModSystem : MonoBehaviour
         sizecounter -= 1;
         sizemult = 1 + 0.1f * -sizecounter;
 
-        changingscoremult = sizescoremult;
-        changingcounter = sizecounter;
-
-        sizescoremult = changescoremult();
+        sizescoremult = changescoremult(sizescoremult, sizecounter);
 
         calculatescoremult();
+        changestack(stack2, sizecounter, "Bonus Multiplier: ", sizescoremult, speedticket, speedtoken);
     }
-
-
-
-    public float spawntimemod;
-    public int spawntimecounter;
-
-    public void targetspawnfrequencyhard() //less frequent spawns but more score
-    {
-        spawntimecounter += 1;
-        spawntimemod = 1 + 0.1f * spawntimecounter;
-
-        changingscoremult = spawnfrequencyscoremult;
-        changingcounter = spawntimecounter;
-
-        spawnfrequencyscoremult = changescoremult();
-
-        calculatescoremult();
-    }
-
-    public void targetspawnfrequencyeasy()
-    {
-        spawntimecounter -= 1;
-        spawntimemod = 1 + 0.1f * spawntimecounter;
-
-        changingscoremult = spawnfrequencyscoremult;
-        changingcounter = spawntimecounter;
-
-        spawnfrequencyscoremult = changescoremult();
-
-        calculatescoremult();
-    }
-
-
 
     public float fireratemod;
     public int fireratecounter;
@@ -160,12 +181,10 @@ public class ModSystem : MonoBehaviour
         fireratecounter += 1;
         fireratemod = 1 + 0.2f * fireratecounter;
 
-        changingscoremult = fireratescoremult;
-        changingcounter = fireratecounter;
-
-        fireratescoremult = changescoremult();
+        fireratescoremult = changescoremult(fireratescoremult, fireratecounter);
 
         calculatescoremult();
+        changestack(stack3, fireratecounter, "Bonus Multiplier: ", fireratescoremult, speedticket, speedtoken);
     }
 
     public void firerateeasy()
@@ -173,13 +192,39 @@ public class ModSystem : MonoBehaviour
         fireratecounter -= 1;
         fireratemod = 1 + 0.2f * fireratecounter;
 
-        changingscoremult = fireratescoremult;
-        changingcounter = fireratecounter;
+        fireratescoremult = changescoremult(fireratescoremult, fireratecounter);
 
-        fireratescoremult = changescoremult();
+        calculatescoremult();
+        changestack(stack3, fireratecounter, "Bonus Multiplier: ", fireratescoremult, speedticket, speedtoken);
+    }
+
+
+    /*public float spawntimemod;
+    public int spawntimecounter;
+
+    public void targetspawnfrequencyhard() //less frequent spawns but more score
+    {
+        spawntimecounter += 1;
+        spawntimemod = 1 + 0.1f * spawntimecounter;
+
+        spawnfrequencyscoremult = changescoremult(spawnfrequencyscoremult, spawntimecounter);
 
         calculatescoremult();
     }
+
+    public void targetspawnfrequencyeasy()
+    {
+        spawntimecounter -= 1;
+        spawntimemod = 1 + 0.1f * spawntimecounter;
+
+        spawnfrequencyscoremult = changescoremult(spawnfrequencyscoremult, spawntimecounter);
+
+        calculatescoremult();
+    }*/
+
+
+
+    
 
 
     //havent added this as mod yet

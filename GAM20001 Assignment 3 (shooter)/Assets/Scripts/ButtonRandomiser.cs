@@ -157,10 +157,10 @@ public class ButtonRandomiser : MonoBehaviour
             new Modifier("Decreases Target Speed by 10%. \n Will decrease Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().speedcounter, -1) + "%", token, ModifierB),
             new Modifier("Decreases Target Size by 10%. \n Will increase Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().sizecounter, 1) + "%", ticket, ModifierC),
             new Modifier("Increases Target Size by 10%. \n Will decrease Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().sizecounter, -1) + "%", token, ModifierD),
-            new Modifier("Decreases Target Spawn Rate by 10%. \n Will increase Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().spawntimecounter, 1) + "%", ticket, ModifierE),
-            new Modifier("Increases Target Spawn Rate by 10%. \n Will decrease Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().spawntimecounter, -1) + "%", token, ModifierF),
-            new Modifier("Decreases Gun Firerate by 10%. \n Will increase Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().fireratecounter, 1) + "%", ticket, ModifierG),
-            new Modifier("Increases Gun Firerate by 10%. \n Will decrease Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().fireratecounter, -1) + "%", token, ModifierH),
+            new Modifier("Decreases Gun Firerate by 10%. \n Will increase Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().fireratecounter, 1) + "%", ticket, ModifierE),
+            new Modifier("Increases Gun Firerate by 10%. \n Will decrease Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().fireratecounter, -1) + "%", token, ModifierF),
+            //new Modifier("Decreases Target Spawn Rate by 10%. \n Will increase Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().spawntimecounter, 1) + "%", ticket, ModifierG),
+            //new Modifier("Increases Target Spawn Rate by 10%. \n Will decrease Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().spawntimecounter, -1) + "%", token, ModifierH),
         };
 
         // Shuffle the list and assign first two
@@ -233,26 +233,6 @@ public class ButtonRandomiser : MonoBehaviour
 
     void ModifierE()
     {
-        Debug.Log("Modifier E selected");
-
-        modscript.targetspawnfrequencyhard();
-
-        GameObject.Find("RoundSystem").GetComponent<RoundLogic>().buttonclicked();
-        GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().newround();
-    }
-
-    void ModifierF()
-    {
-        Debug.Log("Modifier F selected");
-
-        modscript.targetspawnfrequencyeasy();
-
-        GameObject.Find("RoundSystem").GetComponent<RoundLogic>().buttonclicked();
-        GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().newround();
-    }
-
-    void ModifierG()
-    {
         Debug.Log("Modifier G selected");
 
         modscript.fireratehard();
@@ -261,7 +241,7 @@ public class ButtonRandomiser : MonoBehaviour
         GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().newround();
     }
 
-    void ModifierH()
+    void ModifierF()
     {
         Debug.Log("Modifier H selected");
 
@@ -271,5 +251,27 @@ public class ButtonRandomiser : MonoBehaviour
         GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().newround();
     }
 
+
+    /*void ModifierG()
+    {
+        Debug.Log("Modifier E selected");
+
+        modscript.targetspawnfrequencyhard();
+
+        GameObject.Find("RoundSystem").GetComponent<RoundLogic>().buttonclicked();
+        GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().newround();
+    }
+
+    void ModifierH()
+    {
+        Debug.Log("Modifier F selected");
+
+        modscript.targetspawnfrequencyeasy();
+
+        GameObject.Find("RoundSystem").GetComponent<RoundLogic>().buttonclicked();
+        GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().newround();
+    }*/
+
+    
     
 }
