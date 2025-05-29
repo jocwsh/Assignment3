@@ -13,14 +13,15 @@ public class RoundLogic : MonoBehaviour
     public float roundcountdown;
     public bool roundactive = false;
 
-    public GameObject hardbutton;
-    public GameObject easybutton;
-
     private float thresholdscore;
 
     private float[] thresholdcuttoff;
 
     private float playscore;
+
+    public AudioSource audioSource;
+    public AudioClip winsound;
+    public AudioClip losesound;
 
     void Start()
     {
@@ -76,11 +77,14 @@ public class RoundLogic : MonoBehaviour
                 //win sequence
                 roundactive = false;
                 GameObject.Find("RandomiseCanvas").GetComponent<ButtonRandomiser>().AssignButtons();
-                
 
-                Debug.Log (thresholdscore);
+
+                Debug.Log(thresholdscore);
                 Debug.Log("you win");
-        
+
+                audioSource.clip = winsound;
+                audioSource.Play();
+
             }
 
             else
@@ -88,8 +92,11 @@ public class RoundLogic : MonoBehaviour
                 roundactive = false;
                 //do gameover = true instead of ^^
 
-                Debug.Log (thresholdscore);
-                Debug.Log ("you lose");
+                Debug.Log(thresholdscore);
+                Debug.Log("you lose");
+                
+                audioSource.clip = losesound;
+                audioSource.Play();
             }
             
         }
