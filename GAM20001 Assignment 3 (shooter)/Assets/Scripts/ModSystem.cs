@@ -20,8 +20,7 @@ public class ModSystem : MonoBehaviour
 
 
 
-    public float speedmult;
-    public int speedcounter;
+    
 
     public GameObject stack1, stack2, stack3, stack4;
     public GameObject speedticket, speedtoken, text;
@@ -57,6 +56,32 @@ public class ModSystem : MonoBehaviour
         return changingscoremult;
     }
 
+    public void resetgame()
+    {
+
+        speedcounter = 0;
+        sizecounter = 0;
+        fireratecounter = 0;
+        spawntimecounter = 0;
+
+        spawntimemod = 1;
+        sizemult = 1;
+        fireratemod = 1;
+        spawntimemod = 1;
+
+
+
+        changescoremult(speedscoremult, speedcounter);
+        changescoremult(sizescoremult, sizecounter);
+        changescoremult(fireratescoremult, fireratecounter);
+        changescoremult(spawnfrequencyscoremult, spawntimecounter);
+
+        
+
+
+        calculatescoremult();
+    }
+
 
     private void changestack(GameObject stack, int counter, string modname, float mult, GameObject ticket, GameObject token)//have to change which tokens/tickets will be created
     {
@@ -73,7 +98,7 @@ public class ModSystem : MonoBehaviour
             //this is like this cuz destroying shit is stupid
             stacktext[0].text = "";
             stacktext[1].text = "";
-            
+
         }
 
         else
@@ -100,7 +125,7 @@ public class ModSystem : MonoBehaviour
                     Instantiate(token, spawnpos, Quaternion.identity, stack.transform);
                 }
             }
-            
+
             // can change position of text using above value if overlapping
             Instantiate(text, spawnpos - new Vector3(0, 125, 0), Quaternion.identity, stack.transform);
             TextMeshProUGUI[] stacktext = stack.GetComponentsInChildren<TextMeshProUGUI>();
@@ -110,8 +135,8 @@ public class ModSystem : MonoBehaviour
             stacktext[1].text = modname + mult * 100 + "%";
 
         }
-        
-        
+
+
     }
 
     public float calculatescoremult()
@@ -123,6 +148,9 @@ public class ModSystem : MonoBehaviour
         return scoremult;
     }
 
+
+    public float speedmult;
+    public int speedcounter;
 
     public void speedhard() //faster speed but more score
     {

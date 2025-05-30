@@ -19,7 +19,7 @@ public class ButtonRandomiser : MonoBehaviour
 
     private List<Modifier> availableModifiers;
 
-    private bool activeround;
+    private bool activeround, gameover;
 
     private ModSystem modscript;
     private float multchange;
@@ -55,7 +55,6 @@ public class ButtonRandomiser : MonoBehaviour
     float predictscoremult(int counter, int counterchange)
     {
         float[] posmults = new float[] {0.15f, 0.4f, 0.7f, 1f, 1.4f, 2f};
-        Debug.Log(posmults);
 
 
         if (counter <= 0 && counterchange == -1)
@@ -76,8 +75,10 @@ public class ButtonRandomiser : MonoBehaviour
             }
             else
             {
-                multchange = posmults[counter] - posmults[counter-1];
-                multchange = multchange * 100; 
+                multchange = posmults[counter] - posmults[counter - 1];
+                multchange = multchange * 100;
+
+                //Debug.Log()
             }
             
         }
@@ -102,8 +103,9 @@ public class ButtonRandomiser : MonoBehaviour
     private void Update()
     {
         activeround = GameObject.Find("RoundSystem").GetComponent<RoundLogic>().roundactive;
+        gameover = GameObject.Find("RoundSystem").GetComponent<RoundLogic>().gameover;
 
-        if (activeround == false)
+        if (activeround == false && gameover == false)
         {
             butt1trans.transform.localPosition = new Vector2(-400, 100);
             butt2trans.transform.localPosition = new Vector2(400, 100);
@@ -113,7 +115,7 @@ public class ButtonRandomiser : MonoBehaviour
             button2.interactable = true;
             button3.interactable = true;
         }
-        else if (activeround == true)
+        else
         {
             butt1trans.transform.localPosition = new Vector2(5000, 0);
             butt2trans.transform.localPosition = new Vector2(5000, 0);

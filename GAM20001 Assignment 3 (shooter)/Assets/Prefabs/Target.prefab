@@ -130,8 +130,8 @@ MonoBehaviour:
   minymovamp: 0.15
   ymovfrequency: 4
   EasyScale: 2
-  MediumScale: 1.8
-  HardScale: 1.6
+  MediumScale: 1.7
+  HardScale: 1.4
   EasyTarget: 0
   MediumTarget: 0
   HardTarget: 0
