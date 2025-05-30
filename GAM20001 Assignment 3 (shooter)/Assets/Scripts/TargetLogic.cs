@@ -42,6 +42,9 @@ public class TargetLogic : MonoBehaviour
 
     private bool hit = false;
 
+    public AudioSource audioSource;
+    public AudioClip Sound;
+
 
 
     void Start()
@@ -160,13 +163,19 @@ public class TargetLogic : MonoBehaviour
         {
             GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().easyhit();
         }
-        if (MediumTarget == true && hit == false)
+        else if (MediumTarget == true && hit == false)
         {
             GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().mediumhit();
         }
-        if (HardTarget == true && hit == false)
+        else if (HardTarget == true && hit == false)
         {
             GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().hardhit();
+        }
+
+        if (hit == false)
+        {
+            audioSource.clip = Sound;
+            audioSource.Play();
         }
         
         StartCoroutine(despawn());
