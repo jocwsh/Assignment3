@@ -58,7 +58,6 @@ public class ModSystem : MonoBehaviour
 
     public void resetgame()
     {
-
         speedcounter = 0;
         sizecounter = 0;
         fireratecounter = 0;
@@ -69,14 +68,21 @@ public class ModSystem : MonoBehaviour
         fireratemod = 1;
         spawntimemod = 1;
 
+        speedscoremult = 0;
+        sizescoremult = 0;
+        spawnfrequencyscoremult = 0;
+        fireratescoremult = 0;
 
 
-        changescoremult(speedscoremult, speedcounter);
+        /*changescoremult(speedscoremult, speedcounter);
         changescoremult(sizescoremult, sizecounter);
         changescoremult(fireratescoremult, fireratecounter);
-        changescoremult(spawnfrequencyscoremult, spawntimecounter);
+        changescoremult(spawnfrequencyscoremult, spawntimecounter);*/
 
-        
+        changestack(stack1, speedcounter, "Bonus Multiplier: ", speedscoremult, speedticket, speedtoken);
+        changestack(stack2, sizecounter, "Bonus Multiplier: ", sizescoremult, speedticket, speedtoken);
+        changestack(stack3, fireratecounter, "Bonus Multiplier: ", fireratescoremult, speedticket, speedtoken);
+        changestack(stack4, spawntimecounter, "Bonus Multiplier: ", spawnfrequencyscoremult, speedticket, speedtoken);
 
 
         calculatescoremult();
