@@ -29,7 +29,7 @@ public class balllogic : MonoBehaviour
     {
         rb.linearVelocity = Vector3.zero;
         rb.useGravity = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
         Destroy(gameObject);
     }
 }

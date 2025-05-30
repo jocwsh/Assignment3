@@ -76,8 +76,10 @@ public class ButtonRandomiser : MonoBehaviour
             }
             else
             {
-                multchange = posmults[counter] - posmults[counter-1];
-                multchange = multchange * 100; 
+                multchange = posmults[counter] - posmults[counter - 1];
+                multchange = multchange * 100;
+
+                //Debug.Log()
             }
             
         }
