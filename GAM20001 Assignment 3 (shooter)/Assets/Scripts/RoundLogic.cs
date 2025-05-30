@@ -51,10 +51,9 @@ public class RoundLogic : MonoBehaviour
 
     public void buttonclicked()
     {
+        thresholdscore = thresholdcuttoff[roundnumber];
         roundnumber += 1;
         roundactive = true;
-        thresholdscore = thresholdcuttoff[roundnumber];
-
     }
 
 
@@ -107,11 +106,14 @@ public class RoundLogic : MonoBehaviour
 
     public void resetgame()
     {
+        roundnumber = 0;
+        thresholdscore = thresholdcuttoff[roundnumber];
+
+
         roundactive = true;
         gameover = false;
-        roundnumber = 0;
-
-        playround();
+        
+    
     }
 
 }

@@ -19,6 +19,8 @@ public class RestartLogic : MonoBehaviour
         GameObject.Find("RoundSystem").GetComponent<RoundLogic>().resetgame();
         GameObject.Find("ModSystem").GetComponent<ModSystem>().resetgame();
 
+        GameObject.Find("RoundSystem").GetComponent<RoundLogic>().buttonclicked();
+
         GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().newround();
     }
 }
