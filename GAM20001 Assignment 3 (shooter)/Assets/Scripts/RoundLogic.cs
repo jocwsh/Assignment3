@@ -12,6 +12,7 @@ public class RoundLogic : MonoBehaviour
     public float roundtime;
     public float roundcountdown;
     public bool roundactive = false;
+    public bool gameover = false;
 
     private float thresholdscore;
 
@@ -29,7 +30,7 @@ public class RoundLogic : MonoBehaviour
 
         //threshold is currently an array but can be a formula later
         //i think the first one can be cut out if too easy
-        thresholdcuttoff = new float [] {400,500, 700, 900, 1200, 1500, 1900, 2400, 3000, 3700, 4500, 5700};
+        thresholdcuttoff = new float[] { 400, 500, 700, 900, 1200, 1500, 1900, 2400, 3000, 3700, 4500, 5700 };
         thresholdscore = thresholdcuttoff[0];
     }
 
@@ -41,7 +42,7 @@ public class RoundLogic : MonoBehaviour
         }
 
 
-        if(roundactive == true)
+        if (roundactive == true)
         {
             playround();
         }
@@ -67,7 +68,7 @@ public class RoundLogic : MonoBehaviour
 
 
         //this is for checking threshold
-        
+
         if (roundcountdown < 0)
         {
             playscore = GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().score;
@@ -90,17 +91,27 @@ public class RoundLogic : MonoBehaviour
             else
             {
                 roundactive = false;
+                gameover = true;
                 //do gameover = true instead of ^^
 
                 Debug.Log(thresholdscore);
                 Debug.Log("you lose");
-                
+
                 audioSource.clip = losesound;
                 audioSource.Play();
             }
-            
+
         }
 
     }
-       
+
+    public void resetgame()
+    {
+        roundactive = true;
+        gameover = false;
+        roundnumber = 0;
+
+        playround();
+    }
+
 }
