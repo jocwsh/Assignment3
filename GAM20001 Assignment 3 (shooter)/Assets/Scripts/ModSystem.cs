@@ -23,7 +23,7 @@ public class ModSystem : MonoBehaviour
     
 
     public GameObject stack1, stack2, stack3, stack4;
-    public GameObject speedticket, speedtoken, text;
+    public GameObject speedticket, speedtoken, sizeticket, sizetoken, firerateticket, fireratetoken, spawnticket, spawntoken, text;
     private Vector3 spawnpos;
 
     void Start()
@@ -196,7 +196,7 @@ public class ModSystem : MonoBehaviour
         sizescoremult = changescoremult(sizescoremult, sizecounter);
 
         calculatescoremult();
-        changestack(stack2, sizecounter, "Bonus Multiplier: ", sizescoremult, speedticket, speedtoken);
+        changestack(stack2, sizecounter, "Bonus Multiplier: ", sizescoremult, sizeticket, sizetoken);
     }
 
     public void sizeeasy()
@@ -207,7 +207,7 @@ public class ModSystem : MonoBehaviour
         sizescoremult = changescoremult(sizescoremult, sizecounter);
 
         calculatescoremult();
-        changestack(stack2, sizecounter, "Bonus Multiplier: ", sizescoremult, speedticket, speedtoken);
+        changestack(stack2, sizecounter, "Bonus Multiplier: ", sizescoremult, sizeticket, sizetoken);
     }
 
     public float fireratemod;
@@ -221,7 +221,7 @@ public class ModSystem : MonoBehaviour
         fireratescoremult = changescoremult(fireratescoremult, fireratecounter);
 
         calculatescoremult();
-        changestack(stack3, fireratecounter, "Bonus Multiplier: ", fireratescoremult, speedticket, speedtoken);
+        changestack(stack3, fireratecounter, "Bonus Multiplier: ", fireratescoremult, firerateticket, fireratetoken);
     }
 
     public void firerateeasy()
@@ -232,7 +232,7 @@ public class ModSystem : MonoBehaviour
         fireratescoremult = changescoremult(fireratescoremult, fireratecounter);
 
         calculatescoremult();
-        changestack(stack3, fireratecounter, "Bonus Multiplier: ", fireratescoremult, speedticket, speedtoken);
+        changestack(stack3, fireratecounter, "Bonus Multiplier: ", fireratescoremult, firerateticket, fireratetoken);
     }
 
 
@@ -247,7 +247,7 @@ public class ModSystem : MonoBehaviour
         spawnfrequencyscoremult = changescoremult(spawnfrequencyscoremult, spawntimecounter);
 
         calculatescoremult();
-        changestack(stack4, spawntimecounter, "Bonus Multiplier: ", spawnfrequencyscoremult, speedticket, speedtoken);
+        changestack(stack4, spawntimecounter, "Bonus Multiplier: ", spawnfrequencyscoremult, spawnticket, spawntoken);
     }
 
     public void targetspawnfrequencyeasy()
@@ -258,7 +258,7 @@ public class ModSystem : MonoBehaviour
         spawnfrequencyscoremult = changescoremult(spawnfrequencyscoremult, spawntimecounter);
 
         calculatescoremult();
-        changestack(stack4, spawntimecounter, "Bonus Multiplier: ", spawnfrequencyscoremult, speedticket, speedtoken);
+        changestack(stack4, spawntimecounter, "Bonus Multiplier: ", spawnfrequencyscoremult, spawnticket, spawntoken);
     }
 
 
