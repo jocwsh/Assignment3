@@ -131,7 +131,7 @@ public class TargetLogic : MonoBehaviour
         {
             ymov = -10;
         }
-        
+
         if (rightspawn == false)
         {
             rb.linearVelocity = new Vector3(speed, ymov, 0);
@@ -141,7 +141,7 @@ public class TargetLogic : MonoBehaviour
         {
             rb.linearVelocity = new Vector3(-speed, ymov, 0);
         }
-        
+
 
         //if want to change wave after 1 period then do something like
         /*if (elapsedtime > waveperiod)
@@ -156,6 +156,8 @@ public class TargetLogic : MonoBehaviour
         */
     }
 
+    
+    //void OnCollisionEnter(Collision collision)
     void OnTriggerEnter(Collider other)
     {
         //link to score here

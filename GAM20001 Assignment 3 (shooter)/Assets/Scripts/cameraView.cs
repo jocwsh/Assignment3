@@ -32,8 +32,8 @@ public class cameraView : MonoBehaviour
             yRotation += mouseX;
             yRotation = Mathf.Clamp(yRotation, -45f, 45f);
 
-            transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-            playerBody.localRotation = Quaternion.Euler(0f, yRotation, 0f);
+            transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
+            //playerBody.localRotation = Quaternion.Euler(0f, yRotation, 0f);
         }
 
         if (GameObject.Find("RoundSystem").GetComponent<RoundLogic>().roundactive == false)
