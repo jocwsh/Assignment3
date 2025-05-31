@@ -21,6 +21,7 @@ public class TargetLogic : MonoBehaviour
 
 
     //if changing size is for all then just do a global scale multiplier
+    private float defaultscale = 0.65f;
     public float EasyScale, MediumScale, HardScale;
     private float scalemult, speedmult;
     private Vector3 EasySize, MediumSize, HardSize;
@@ -70,9 +71,9 @@ public class TargetLogic : MonoBehaviour
         spawnx = transform.position.x;
         
 
-        EasySize = new Vector3 (EasyScale * scalemult, 0.06f, EasyScale * scalemult);
-        MediumSize = new Vector3 (MediumScale * scalemult, 0.06f, MediumScale * scalemult);
-        HardSize = new Vector3 (HardScale * scalemult, 0.06f, HardScale * scalemult);
+        EasySize = new Vector3 (EasyScale * scalemult * defaultscale, EasyScale * scalemult* defaultscale, EasyScale * scalemult* defaultscale);
+        MediumSize = new Vector3 (MediumScale * scalemult* defaultscale, MediumScale * scalemult* defaultscale, MediumScale * scalemult* defaultscale);
+        HardSize = new Vector3 (HardScale * scalemult* defaultscale, HardScale * scalemult* defaultscale, HardScale * scalemult* defaultscale);
 
 
         //for type of target

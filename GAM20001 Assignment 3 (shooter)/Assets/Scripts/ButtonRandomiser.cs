@@ -24,7 +24,7 @@ public class ButtonRandomiser : MonoBehaviour
     private ModSystem modscript;
     private float multchange;
 
-    public Sprite ticket, token;
+    public Sprite speedticket, speedtoken, sizeticket, sizetoken, firerateticket, fireratetoken, spawnticket, spawntoken;
     
 
     private void Start()
@@ -155,14 +155,14 @@ public class ButtonRandomiser : MonoBehaviour
 
         List<Modifier> shuffledModifiers = new List<Modifier>
         {
-            new Modifier("Increases Target Speed by 10%. \n Increase Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().speedcounter, 1) + "%", ticket, ModifierA),
-            new Modifier("Decreases Target Speed by 10%. \n Decrease Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().speedcounter, -1) + "%", token, ModifierB),
-            new Modifier("Decreases Target Size by 10%. \n Increase Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().sizecounter, 1) + "%", ticket, ModifierC),
-            new Modifier("Increases Target Size by 10%. \n Decrease Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().sizecounter, -1) + "%", token, ModifierD),
-            new Modifier("Decreases Gun Firerate by 10%. \n Increase Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().fireratecounter, 1) + "%", ticket, ModifierE),
-            new Modifier("Increases Gun Firerate by 10%. \n Decrease Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().fireratecounter, -1) + "%", token, ModifierF),
-            new Modifier("Decreases Target Spawn Rate by 10%. \n Increase Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().spawntimecounter, 1) + "%", ticket, ModifierG),
-            new Modifier("Increases Target Spawn Rate by 10%. \n Decrease Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().spawntimecounter, -1) + "%", token, ModifierH),
+            new Modifier("Increases Target Speed by 10%. \n Increase Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().speedcounter, 1) + "%", speedticket, ModifierA),
+            new Modifier("Decreases Target Speed by 10%. \n Decrease Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().speedcounter, -1) + "%", speedtoken, ModifierB),
+            new Modifier("Decreases Target Size by 10%. \n Increase Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().sizecounter, 1) + "%", sizeticket, ModifierC),
+            new Modifier("Increases Target Size by 10%. \n Decrease Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().sizecounter, -1) + "%", sizetoken, ModifierD),
+            new Modifier("Decreases Gun Firerate by 10%. \n Increase Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().fireratecounter, 1) + "%", firerateticket, ModifierE),
+            new Modifier("Increases Gun Firerate by 10%. \n Decrease Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().fireratecounter, -1) + "%", fireratetoken, ModifierF),
+            new Modifier("Decreases Target Spawn Rate by 10%. \n Increase Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().spawntimecounter, 1) + "%", spawnticket, ModifierG),
+            new Modifier("Increases Target Spawn Rate by 10%. \n Decrease Score Multiplier by " + predictscoremult(GameObject.Find("ModSystem").GetComponent<ModSystem>().spawntimecounter, -1) + "%", spawntoken, ModifierH),
         };
 
         // Shuffle the list and assign first two
