@@ -33,7 +33,7 @@ public class RoundLogic : MonoBehaviour
         thresholdcuttoff = new float[] { 400, 500, 700, 900, 1200, 1500, 1900, 2400, 3000, 3700, 4500, 5700 };
         thresholdscore = thresholdcuttoff[0];
 
-        GameObject.Find("thresholdscore").GetComponent<updatethresh>().newthresh();
+        //GameObject.Find("thresholdscore").GetComponent<updatethresh>().newthresh();
     }
 
     void Update()
