@@ -140,7 +140,7 @@ MonoBehaviour:
   MediumTarget: 0
   HardTarget: 0
   audioSource: {fileID: 4518399780048097468}
-  Sound: {fileID: 0}
+  Sound: {fileID: 8300000, guid: 4b8c45a9f365cc34682dc568f77dcd58, type: 3}
 --- !u!64 &5537780160844955642
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -172,7 +172,7 @@ AudioSource:
   m_GameObject: {fileID: 7143907024270721863}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 31f20d19bca9c3046b6e5d679c20f653, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
