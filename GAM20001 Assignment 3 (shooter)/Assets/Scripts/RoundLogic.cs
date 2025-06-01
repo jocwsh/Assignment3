@@ -14,7 +14,7 @@ public class RoundLogic : MonoBehaviour
     public bool roundactive = false;
     public bool gameover = false;
 
-    private float thresholdscore;
+    public float thresholdscore;
 
     private float[] thresholdcuttoff;
 
@@ -32,6 +32,8 @@ public class RoundLogic : MonoBehaviour
         //i think the first one can be cut out if too easy
         thresholdcuttoff = new float[] { 400, 500, 700, 900, 1200, 1500, 1900, 2400, 3000, 3700, 4500, 5700 };
         thresholdscore = thresholdcuttoff[0];
+
+        GameObject.Find("thresholdscore").GetComponent<updatethresh>().newthresh();
     }
 
     void Update()
@@ -51,9 +53,12 @@ public class RoundLogic : MonoBehaviour
 
     public void buttonclicked()
     {
-        thresholdscore = thresholdcuttoff[roundnumber];
         roundnumber += 1;
+        thresholdscore = thresholdcuttoff[roundnumber];
         roundactive = true;
+
+
+        GameObject.Find("thresholdscore").GetComponent<updatethresh>().newthresh();
     }
 
 
@@ -108,6 +113,9 @@ public class RoundLogic : MonoBehaviour
     {
         roundnumber = 0;
         thresholdscore = thresholdcuttoff[roundnumber];
+
+        GameObject.Find("thresholdscore").GetComponent<updatethresh>().newthresh();
+        
 
 
         roundactive = true;

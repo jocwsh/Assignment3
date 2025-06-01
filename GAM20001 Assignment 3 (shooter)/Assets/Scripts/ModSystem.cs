@@ -118,7 +118,7 @@ public class ModSystem : MonoBehaviour
             {
                 for (int i = 0; i < Mathf.Abs(counter); i++)
                 {
-                    spawnpos = stack.transform.position - new Vector3(0, 30 * i, 0);
+                    spawnpos = stack.transform.position - new Vector3(0, 20 * i, 0);
                     Instantiate(ticket, spawnpos, Quaternion.identity, stack.transform);
                 }
             }
@@ -127,7 +127,7 @@ public class ModSystem : MonoBehaviour
             {
                 for (int i = 0; i < Mathf.Abs(counter); i++)
                 {
-                    spawnpos = stack.transform.position - new Vector3(0, 30 * i, 0);
+                    spawnpos = stack.transform.position - new Vector3(0, 20 * i, 0);
                     Instantiate(token, spawnpos, Quaternion.identity, stack.transform);
                 }
             }

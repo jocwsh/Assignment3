@@ -107,9 +107,9 @@ public class ButtonRandomiser : MonoBehaviour
 
         if (activeround == false && gameover == false)
         {
-            butt1trans.transform.localPosition = new Vector2(-400, 100);
-            butt2trans.transform.localPosition = new Vector2(400, 100);
-            butt3trans.transform.localPosition = new Vector2(0, -110);
+            butt1trans.transform.localPosition = new Vector2(-400, -50);
+            butt2trans.transform.localPosition = new Vector2(400, -50);
+            //butt3trans.transform.localPosition = new Vector2(0, -110);
 
             button1.interactable = true;
             button2.interactable = true;
