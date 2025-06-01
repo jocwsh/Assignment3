@@ -1001,4 +1001,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 4502392682438204459}
-  settingsMenuUI: {fileID: 0}
+  settingsMenuUI: {fileID: 3904156707900420740}

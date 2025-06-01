@@ -19,6 +19,6 @@ public class rotatingarm : MonoBehaviour
 
         transform.eulerAngles = camrot;
 
-        Debug.Log(camrot);
+        //Debug.Log(camrot);
     }
 }
