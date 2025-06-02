@@ -14,14 +14,14 @@ public class cameraView : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     void Update()
     {
         if (GameObject.Find("RoundSystem").GetComponent<RoundLogic>().roundactive == true)
         {
-            Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.lockState = CursorLockMode.Locked;
 
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
@@ -43,4 +43,10 @@ public class cameraView : MonoBehaviour
 
 
     }
+
+    public void updatesens()
+    {
+        mouseSensitivity = GameObject.Find("SettingsMenu").GetComponent<Settings>().sens;
+    }
 }
+

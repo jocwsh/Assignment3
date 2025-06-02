@@ -140,7 +140,7 @@ MonoBehaviour:
   MediumTarget: 0
   HardTarget: 0
   audioSource: {fileID: 4518399780048097468}
-  Sound: {fileID: 8300000, guid: 4b8c45a9f365cc34682dc568f77dcd58, type: 3}
+  Sound: {fileID: 8300000, guid: 9f91017a9c269f843934ca1731f80613, type: 3}
 --- !u!64 &5537780160844955642
 MeshCollider:
   m_ObjectHideFlags: 0

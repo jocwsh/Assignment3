@@ -96,7 +96,10 @@ public class RoundLogic : MonoBehaviour
             {
                 roundactive = false;
                 gameover = true;
-                //do gameover = true instead of ^^
+
+                //GameObject.Find("RestartButton").GetComponent<RestartLogic>().restartscreen();
+
+
 
                 Debug.Log(thresholdscore);
                 Debug.Log("you lose");

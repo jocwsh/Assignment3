@@ -5,6 +5,10 @@ public class RestartLogic : MonoBehaviour
     private bool gameover;
     public GameObject deathscreen, hud;
 
+    /*void Start()
+    {
+        moveaway();
+    }*/
     // Update is called once per frame
     void Update()
     {
@@ -20,7 +24,15 @@ public class RestartLogic : MonoBehaviour
 
         else if (gameover == true)
         {
-            transform.localPosition = new Vector2(0, 0);
+
+            GameObject.Find("ModSystem").GetComponent<ModSystem>().resetgame();
+
+            GameObject.Find("RoundSystem").GetComponent<RoundLogic>().buttonclicked();
+
+            GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().newround();
+
+
+            transform.localPosition = new Vector2(-80, 0);
             deathscreen.transform.localPosition = new Vector2(0, 0);
 
             hud.SetActive(false);
@@ -29,13 +41,34 @@ public class RestartLogic : MonoBehaviour
         //check gameover bool in roundlogic here and move button on screen or something
     }
 
-    public void RestartGame()
+    /*public void restartscreen()
     {
-        GameObject.Find("RoundSystem").GetComponent<RoundLogic>().resetgame();
         GameObject.Find("ModSystem").GetComponent<ModSystem>().resetgame();
 
         GameObject.Find("RoundSystem").GetComponent<RoundLogic>().buttonclicked();
 
         GameObject.Find("ScoreSystem").GetComponent<ScoreManager>().newround();
+
+
+        transform.localPosition = new Vector2(-80, 0);
+        deathscreen.transform.localPosition = new Vector2(0, 0);
+
+        hud.SetActive(false);
+
+    }
+
+    private void moveaway()
+    {
+        transform.localPosition = new Vector2(5000, 0);
+        deathscreen.transform.localPosition = new Vector2(5000, 0);
+
+        hud.SetActive(true);
+    }*/
+
+    public void RestartGame()
+    {
+        GameObject.Find("RoundSystem").GetComponent<RoundLogic>().resetgame();
+        //moveaway();
+
     }
 }

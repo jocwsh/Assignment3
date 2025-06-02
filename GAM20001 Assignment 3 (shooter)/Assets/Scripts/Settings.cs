@@ -11,6 +11,8 @@ public class Settings : MonoBehaviour
 
     Resolution[] resolutions;
 
+    public float sens;
+
     void Start()
     {
         resolutions = Screen.resolutions;
@@ -37,8 +39,6 @@ public class Settings : MonoBehaviour
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
 
-
-
     }
 
 
@@ -57,4 +57,15 @@ public class Settings : MonoBehaviour
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
+
+    public void setsens()
+    {
+        sens = GameObject.Find("Sensitivity").GetComponent<Slider>().value;
+
+        Debug.Log(sens);
+
+        GameObject.Find("Main Camera").GetComponent<cameraView>().updatesens();
+    }
+
+    
 }
