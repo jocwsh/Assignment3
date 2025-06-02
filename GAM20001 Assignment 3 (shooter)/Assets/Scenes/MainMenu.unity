@@ -447,9 +447,9 @@ MonoBehaviour:
     mouse 1! Be careful how you aim though. \r\n\r\nProgressing through clown training
     needs you to reach a certain score each time.\r\n\r\nYou'll be able to gain different
     skills and change the difficulty by exchanging tickets and tokens! Tokens will
-    improve your ability to fight while tickets will offer more difficulty, you'll
-    gain more points and graduate faster with tickets!\r\n\r\nYour tokens will give
-    you a slightly worse grade while tickets can increase it"
+    improve your ability to fight for a small price while tickets will offer more
+    points but will increase the difficulty!\r\n\r\nThe bonuses on your tickets stack
+    while tokens subtract a flat amount. So make sure you choose wisely!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fd5caabb6e621e04992c8ca5cda16580, type: 2}
   m_sharedMaterial: {fileID: 7363363470071675082, guid: fd5caabb6e621e04992c8ca5cda16580, type: 2}
